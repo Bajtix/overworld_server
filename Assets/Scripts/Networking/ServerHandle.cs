@@ -36,6 +36,11 @@ public class ServerHandle
         EnitySpawner.instance.Spawn(_pos);
     }
 
-    
+    public static void Interact(int _fromClient, Packet _packet)
+    {
+        Quaternion _rot = _packet.ReadQuaternion();
+        Server.clients[_fromClient].player.look.rotation = _rot;
+        Server.clients[_fromClient].player.inputs[5] = true;
+    }
 
 }

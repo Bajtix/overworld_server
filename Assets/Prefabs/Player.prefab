@@ -145,6 +145,7 @@ MonoBehaviour:
   username: 
   controller: {fileID: 2319307683833354698}
   shootOrigin: {fileID: 4375789778787327676}
+  look: {fileID: 7311943217482982376}
   gravity: -19.62
   moveSpeed: 4
   jumpSpeed: 9
@@ -153,6 +154,7 @@ MonoBehaviour:
   maxHealth: 100
   itemAmount: 0
   maxItemAmount: 3
+  inputs: 
   seatIn: {fileID: 0}
 --- !u!143 &2319307683833354698
 CharacterController:
@@ -183,7 +185,6 @@ GameObject:
   - component: {fileID: 7311943217482982376}
   - component: {fileID: 8909889038399113578}
   - component: {fileID: 2149447511087089262}
-  - component: {fileID: 5231148909164179479}
   m_Layer: 0
   m_Name: VertRot
   m_TagString: Untagged
@@ -252,19 +253,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5231148909164179479
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5549317518423601054}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5842331344950954625
 GameObject:
   m_ObjectHideFlags: 0

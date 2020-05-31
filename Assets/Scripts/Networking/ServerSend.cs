@@ -215,6 +215,18 @@ public class ServerSend
         }
     }
 
+    public static void SpawnEntity(int to,Entity entity)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.spawnEntity))
+        {
+            _packet.Write(entity.id);
+            _packet.Write(entity.transform.position);
+            _packet.Write(entity.modelId);
+
+            SendTCPData(to,_packet);
+        }
+    }
+
     public static void EntityPosition(Entity entity)
     {
         using (Packet _packet = new Packet((int)ServerPackets.entityPosition))
@@ -222,7 +234,7 @@ public class ServerSend
             _packet.Write(entity.id);
             _packet.Write(entity.transform.position);
             _packet.Write(entity.transform.rotation);
-
+            _packet.Write(entity.additionalData);
             SendUDPDataToAll(_packet);
         }
     }

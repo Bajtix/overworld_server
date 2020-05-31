@@ -63,6 +63,7 @@ public class ChunkManager : MonoBehaviour
 
     public void RemoveChunk(int x, int y)
     {
+        return;
         if (x < 0 || x > chunks.Length || y < 0 || y > chunks.Length)
             return;
         if (chunks[x, y] != null)

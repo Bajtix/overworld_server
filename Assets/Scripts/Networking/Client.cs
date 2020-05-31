@@ -223,12 +223,18 @@ public class Client
                 if (_client.id != id)
                 {
                     ServerSend.SpawnPlayer(id, _client.player);
+                    
                 }
             }
         }
 
+        foreach(EntityManager e in Server.entities.Values)
+        {
+            ServerSend.SpawnEntity(id,e.entity);
+        }
+
         // Send the new player to all players (including himself)
-        foreach (Client _client in Server.clients.Values)
+            foreach (Client _client in Server.clients.Values)
         {
             if (_client.player != null)
             {

@@ -7,6 +7,7 @@ public class Entity : MonoBehaviour
 {
     public int id;
     public int modelId;
+    public string additionalData;
     public bool updatePos = false;
 
     public void Initialize(int id,int modelId)

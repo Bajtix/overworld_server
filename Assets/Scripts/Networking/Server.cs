@@ -130,7 +130,8 @@ public class Server
         {
             { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
             { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
-            { (int)ClientPackets.spawnCar, ServerHandle.SpawnCar }
+            { (int)ClientPackets.spawnCar, ServerHandle.SpawnCar },
+            { (int)ClientPackets.interact, ServerHandle.Interact }
         };
         Debug.Log("Initialized packets.");
     }

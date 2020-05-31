@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public string username;
     public CharacterController controller;
     public Transform shootOrigin;
+    public Transform look;
     public float gravity = -9.81f;
     public float moveSpeed = 5f;
     public float jumpSpeed = 5f;
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     public int itemAmount = 0;
     public int maxItemAmount = 3;
 
-    private bool[] inputs;
+    public bool[] inputs;
     private float yVelocity = 0;
 
     public Seat seatIn;
@@ -72,15 +73,18 @@ public class Player : MonoBehaviour
         {
             if(inputs[5] && interactTimeout <= 0)
             {
-                interactTimeout = 2;
+                interactTimeout = 0.1f;
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.forward, out hit, 10f))
+                if (Physics.Raycast(look.position, look.forward, out hit, 10f))
                 {
                     if(hit.collider!=null)
                     if(hit.collider.GetComponent<Seat>() != null)
                     {
-                        seatIn = hit.collider.GetComponent<Seat>();
-                        seatIn.TakeASeat(this);
+                        if (hit.collider.GetComponent<Seat>().controller == null)
+                        {
+                            seatIn = hit.collider.GetComponent<Seat>();
+                            seatIn.TakeASeat(this);
+                        }
                     }
                 }
             }
@@ -93,7 +97,7 @@ public class Player : MonoBehaviour
             seatIn.SetInputs(_inputDirection.y, _inputDirection.x);
             if (inputs[5] && interactTimeout<=0)
             {
-                interactTimeout = 2;
+                interactTimeout = 0.1f;
                 seatIn.LeaveSeat();
                 seatIn = null;
             }
@@ -170,6 +174,8 @@ public class Player : MonoBehaviour
         inputs = _inputs;
         transform.rotation = _rotation;
     }
+
+    
 
 
 }
