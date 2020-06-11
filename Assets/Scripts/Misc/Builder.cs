@@ -26,8 +26,10 @@ public class Builder : MonoBehaviour
         if (Physics.Raycast(look.position, look.forward, out hit, 10f, MaskBuilds(buildingType,false)))
         {
             preview.transform.position = hit.collider.transform.position;
-            preview.transform.rotation = hit.collider.transform.rotation;
-
+            if (buildingType == BuildSlot.PlaceSlotType.Main)
+                preview.transform.rotation = hit.collider.transform.rotation * rot;
+            else
+                preview.transform.rotation = hit.collider.transform.rotation;
         }
         else
             preview.GetComponent<Entity>().additionalData = "0";
