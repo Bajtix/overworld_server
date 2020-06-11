@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class GameTimeManager : MonoBehaviour
 {
-    public static TimeManager instance;
+    public static GameTimeManager instance;
 
     public float time;
     public float clouds;

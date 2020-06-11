@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-class ToolUtils
+class _GameUtilityToolset
 {
     public static int FirstFree(Dictionary<int, EntityManager> dict, int minumum)
     {

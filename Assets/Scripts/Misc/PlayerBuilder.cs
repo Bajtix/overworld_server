@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Builder : MonoBehaviour
+public class PlayerBuilder : MonoBehaviour
 {
     public BuildSlot.PlaceSlotType buildingType = BuildSlot.PlaceSlotType.Foundation;
     public int[] parts = {2,3,4,5};

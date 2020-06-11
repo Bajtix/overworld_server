@@ -233,21 +233,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2734702867900939068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e687342e84ee54b85e03bb23f3f44b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dd3a6f5338efff4596accd0b506aec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1000
   stability: 0
-  placeSlots:
-  - {fileID: 9201749483296366825}
-  - {fileID: 3133825152476399925}
-  - {fileID: 7339136499721605823}
-  - {fileID: 6690452153359431919}
-  - {fileID: 6220426546406742243}
-  - {fileID: 2563884065730802408}
-  - {fileID: 4870425300699939069}
-  - {fileID: 4821609136719170462}
-  - {fileID: 5462007364855533039}
+  placeSlots: []
 --- !u!64 &6256186881788437047
 MeshCollider:
   m_ObjectHideFlags: 0

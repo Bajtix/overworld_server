@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public int id;
     public string username;
     public CharacterController controller;
-    public Builder builder;
+    public PlayerBuilder builder;
     public Transform shootOrigin;
     public Transform look;
     public float gravity = -9.81f;

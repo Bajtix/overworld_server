@@ -41,7 +41,7 @@ public class EnitySpawner : MonoBehaviour
     public int SpawnNewEntity(int modelId, Vector3 position, Quaternion rotation)
     {
         Debug.Log("Spawning new entity");
-        int id = ToolUtils.FirstFree(Server.entities,0);
+        int id = _GameUtilityToolset.FirstFree(Server.entities,0);
 
         Server.entities.Add(id, new EntityManager(id, modelId, -9999));
         Server.entities[id].Spawn(position,rotation);
