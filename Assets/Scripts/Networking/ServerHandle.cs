@@ -33,14 +33,15 @@ public class ServerHandle
     {
         Vector3 _pos = _packet.ReadVector3();
 
-        EnitySpawner.instance.Spawn(_pos);
+        EnitySpawner.instance.SpawnCar(_pos);
     }
 
     public static void Interact(int _fromClient, Packet _packet)
     {
         Quaternion _rot = _packet.ReadQuaternion();
+        KeyCode _code = (KeyCode)_packet.ReadInt();
         Server.clients[_fromClient].player.look.rotation = _rot;
-        Server.clients[_fromClient].player.inputs[5] = true;
+        Server.clients[_fromClient].player.Key(_code);
     }
 
 }

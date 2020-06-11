@@ -32,11 +32,12 @@ RenderSettings:
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
-  m_DefaultReflectionMode: 0
+  m_DefaultReflectionMode: 1
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
-  m_CustomReflection: {fileID: 0}
+  m_CustomReflection: {fileID: 7995536730365897021, guid: 0000000000000000d000000000000000,
+    type: 0}
   m_Sun: {fileID: 170076734}
   m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
@@ -307,6 +308,8 @@ GameObject:
   - component: {fileID: 1721141967}
   - component: {fileID: 1721141966}
   - component: {fileID: 1721141968}
+  - component: {fileID: 1721141969}
+  - component: {fileID: 1721141970}
   m_Layer: 0
   m_Name: TerrainManager
   m_TagString: Untagged
@@ -367,6 +370,36 @@ MonoBehaviour:
   terrainPrefab: {fileID: 9076922787664786189, guid: bed1a7daed282ea4fae06fc7d1f3c996,
     type: 3}
   chunkCount: 0
+--- !u!114 &1721141969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721141965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3218b2ed6f8874c9c1a505f2027047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chunk: {fileID: 0}
+  cube: {fileID: 4152737444133632501, guid: 9f2fd5b8e456bf34395ae8c10ba59aad, type: 3}
+  clickHereToRemoveObject: 0
+  clickHereToAddObject: 0
+--- !u!114 &1721141970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721141965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3be66863400664982ea766e7ed9503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  clouds: 0
 --- !u!1 &1902706397
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +448,13 @@ MonoBehaviour:
   entityPrefabs:
   - {fileID: 5168105003427674052, guid: 17c3ab37fc0b80f44880e35cbd9376a2, type: 3}
   - {fileID: 7878198004873616147, guid: 248b46e9eaf0ef84f98346155897e01f, type: 3}
+  - {fileID: 4152737444133632501, guid: 9f2fd5b8e456bf34395ae8c10ba59aad, type: 3}
+  - {fileID: 4644100740068361823, guid: f04466fe0dd449b44a0188aae78d96e9, type: 3}
+  - {fileID: 1633449946562062394, guid: 7c19102307d90db449d3020aadba5be7, type: 3}
+  - {fileID: 3272350126065309553, guid: 147628f9c99ab144c8f3c6a504b5f2b3, type: 3}
+  - {fileID: 2734702867900939068, guid: 3b764d8415840c94cba55870fcabeb96, type: 3}
+  - {fileID: 718362476609646073, guid: fb462dc1104847e4c9eb5269f4822215, type: 3}
+  - {fileID: 5770007334914014808, guid: 23f3795630288f74fa60d2ba836ce695, type: 3}
   projectilePrefab: {fileID: 7859153389591767978, guid: f08613b9a5c37044f8cb2ad66a833ea6,
     type: 3}
 --- !u!4 &1902706400

@@ -7,15 +7,17 @@ public class Entity : MonoBehaviour
 {
     public int id;
     public int modelId;
+    public int parentId = -1;
     public string additionalData;
-    public bool updatePos = false;
+    public bool updatePos = true;
 
-    public void Initialize(int id,int modelId)
+    public void Initialize(int id,int modelId, int parentId)
     {
         this.id = id;
         this.modelId = modelId;
-        updatePos = true;
+        this.parentId = parentId;
     }
+
 
     private void FixedUpdate()
     {

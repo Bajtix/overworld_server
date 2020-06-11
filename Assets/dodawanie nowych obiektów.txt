@@ -1,0 +1,31 @@
+piszę to dla siebie, jeśli zapomnę. 
+================================================
+Aby dodać nowy obiekt nieruchomy, ChunkObject, należy:
+***************************************************************************
+Na serwerze i u klienta:
+
+Wgrać odpowiednie modele.
+Stworzyć prefaby.
+
+Na serwerze:
+
+Dodać obiektowi skrypt ChunkObject i przypisać mu niezajęte id w pole modeld.
+
+U klienta:
+
+Do globalnego słownika w GameManagerze - ,,Chunk Objects" przypisać dodany przez nas obiekt.
+
+Aby dodać nowy obiekt ruchomy, Entity, należy:
+***************************************************************************
+Na serwerze i u klienta:
+
+Wgrać odpowiednie modele.
+Stworzyć prefaby.
+
+Na serwerze:
+
+Do obiektu przypisać skrypt Entity i wybrać niezajęte modelId.
+
+U klienta:
+
+W GameManagerze przypisać odpowiedni obiekt.

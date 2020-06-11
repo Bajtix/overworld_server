@@ -47,7 +47,7 @@ public class ChunkManager : MonoBehaviour
 
     public static V2Int ChunkAt(float x, float y)
     {
-        return new V2Int(Mathf.RoundToInt(x / 40), Mathf.RoundToInt(y / 40));
+        return new V2Int(Mathf.FloorToInt(x / 40), Mathf.FloorToInt(y / 40));
     }
 
     public void AddChunk(int x, int y)

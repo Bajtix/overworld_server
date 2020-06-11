@@ -209,7 +209,9 @@ public class ServerSend
         {
             _packet.Write(entity.id);
             _packet.Write(entity.transform.position);
+            _packet.Write(entity.transform.rotation);
             _packet.Write(entity.modelId);
+            _packet.Write(entity.parentId);
 
             SendTCPDataToAll(_packet);
         }
@@ -221,9 +223,20 @@ public class ServerSend
         {
             _packet.Write(entity.id);
             _packet.Write(entity.transform.position);
+            _packet.Write(entity.transform.rotation);
             _packet.Write(entity.modelId);
+            _packet.Write(entity.parentId);
 
             SendTCPData(to,_packet);
+        }
+    }
+
+    public static void KillEntity(int id)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.killEntity))
+        {
+            _packet.Write(id);
+            SendTCPDataToAll(_packet);
         }
     }
 
@@ -235,6 +248,29 @@ public class ServerSend
             _packet.Write(entity.transform.position);
             _packet.Write(entity.transform.rotation);
             _packet.Write(entity.additionalData);
+            SendUDPDataToAll(_packet);
+        }
+    }
+
+    public static void ChunkMod(ChunkMod c)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.chunkMod))
+        {
+            _packet.Write((int)c.type);
+            _packet.Write(c.chunk);
+            _packet.Write(c.objectId);
+            _packet.Write(c.modelId);
+
+            SendTCPDataToAll(_packet);
+        }
+    }
+
+    public static void Time(float time,float cloudDensity)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.time))
+        {
+            _packet.Write(time);
+            _packet.Write(cloudDensity);
             SendUDPDataToAll(_packet);
         }
     }

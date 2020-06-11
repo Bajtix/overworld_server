@@ -44,9 +44,12 @@ public class NetworkManager : MonoBehaviour
         return Instantiate(playerPrefab, new Vector3(800f, 400f, 800f), Quaternion.identity).GetComponent<Player>();
     }
 
-    public Entity SpawnNewEntity(Vector3 position,int model)
+    public Entity SpawnNewEntity(Vector3 position,Quaternion rotation, int model,int parentId)
     {
-        return Instantiate(entityPrefabs[model], position, Quaternion.identity).GetComponent<Entity>();
+        if(parentId != -9999)
+            return Instantiate(entityPrefabs[model], position, rotation,Server.entities[parentId].entity.transform).GetComponent<Entity>();
+        else
+            return Instantiate(entityPrefabs[model], position, rotation).GetComponent<Entity>();
     }
 
 }

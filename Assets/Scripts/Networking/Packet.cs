@@ -26,7 +26,11 @@ public enum ServerPackets
 
     //-----------
     spawnEntity,
-    entityPosition
+    entityPosition,
+    killEntity,
+    chunkMod,
+    //-----------
+    time
 }
 
 /// <summary>Sent from client to server.</summary>
@@ -240,11 +244,6 @@ public class Packet : IDisposable
         {
             throw new Exception("Could not read value of type 'byte[]'!");
         }
-    }
-
-    internal void Write(object modelId)
-    {
-        throw new NotImplementedException();
     }
 
     /// <summary>Reads a short from the packet.</summary>

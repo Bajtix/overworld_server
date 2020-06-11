@@ -11,6 +11,8 @@ public class Server
     public static int Port { get; private set; }
     public static Dictionary<int, Client> clients = new Dictionary<int, Client>();
     public static Dictionary<int, EntityManager> entities = new Dictionary<int, EntityManager>();
+    public static List<ChunkMod> bufferedChunkmods = new List<ChunkMod>();
+
     public delegate void PacketHandler(int _fromClient, Packet _packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
 

@@ -234,7 +234,7 @@ public class Client
         }
 
         // Send the new player to all players (including himself)
-            foreach (Client _client in Server.clients.Values)
+        foreach (Client _client in Server.clients.Values)
         {
             if (_client.player != null)
             {

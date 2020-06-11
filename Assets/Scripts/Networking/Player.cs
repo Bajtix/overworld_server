@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public int id;
     public string username;
     public CharacterController controller;
+    public Builder builder;
     public Transform shootOrigin;
     public Transform look;
     public float gravity = -9.81f;
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     public float maxHealth = 100f;
     public int itemAmount = 0;
     public int maxItemAmount = 3;
+
+    public bool buildingMode = false;
 
     public bool[] inputs;
     private float yVelocity = 0;
@@ -71,37 +74,11 @@ public class Player : MonoBehaviour
 
         if (seatIn == null)
         {
-            if(inputs[5] && interactTimeout <= 0)
-            {
-                interactTimeout = 0.1f;
-                RaycastHit hit;
-                if (Physics.Raycast(look.position, look.forward, out hit, 10f))
-                {
-                    if(hit.collider!=null)
-                    if(hit.collider.GetComponent<Seat>() != null)
-                    {
-                        if (hit.collider.GetComponent<Seat>().controller == null)
-                        {
-                            seatIn = hit.collider.GetComponent<Seat>();
-                            seatIn.TakeASeat(this);
-                        }
-                    }
-                }
-            }
-
-
             Move(_inputDirection);
         }
         else
         {
             seatIn.SetInputs(_inputDirection.y, _inputDirection.x);
-            if (inputs[5] && interactTimeout<=0)
-            {
-                interactTimeout = 0.1f;
-                seatIn.LeaveSeat();
-                seatIn = null;
-            }
-            
         }
 
         ServerSend.PlayerPosition(this);
@@ -142,6 +119,86 @@ public class Player : MonoBehaviour
             ChunkManager.instance.RemoveChunk(chunkPos.x + TerrainSettings.instance.renderDistance + 1, chunkPos.y + i);
         }
     }
+
+    public void Key(KeyCode code)
+    {
+        if (interactTimeout > 0)
+            return;
+
+        if(code == KeyCode.E)
+        {
+            if (seatIn == null)
+            {                   
+                RaycastHit hit;
+                if (Physics.Raycast(look.position, look.forward, out hit, 10f))
+                {
+                    if (hit.collider != null)
+                        Interact(hit.collider, hit);
+                }
+            }
+            else
+            {                             
+                seatIn.LeaveSeat();
+                seatIn = null;
+            }
+        }
+
+        if(code == KeyCode.T)
+        {
+            builder.selectedPart++;
+            
+            if (builder.selectedPart == builder.parts.Length)
+                builder.selectedPart = 0;
+
+            Debug.Log($"Set building to mdl {builder.parts[builder.selectedPart]}, build type {builder.types[builder.selectedPart]}");
+        }
+
+        if(code == KeyCode.B)
+        {
+            if (seatIn == null)
+            {
+                builder.BuildButton();
+            }
+        }
+
+        if (code == KeyCode.N)
+        {
+            if (seatIn == null)
+            {
+                builder.DestroyButton(look);
+            }
+        }
+
+        if(code == KeyCode.R)
+        {
+            if(seatIn == null)
+            {
+                builder.rot *= Quaternion.Euler(0, 0, 90);
+            }
+        }
+
+        interactTimeout = 0.1f;
+    }
+
+    private void Interact(Collider collider, RaycastHit hit)
+    {
+        if (collider.GetComponent<Seat>() != null)
+        {
+            if (collider.GetComponent<Seat>().controller == null)
+            {
+                seatIn = collider.GetComponent<Seat>();
+                seatIn.TakeASeat(this);
+            }
+        }
+        else if (collider.GetComponent<ChunkObject>() != null)
+        {
+            ChunkObject i = collider.GetComponent<ChunkObject>();
+            i.chunk.RemoveFeature(i.myId);
+        }
+        
+    }
+
+    
 
     /// <summary>Calculates the player's desired movement direction and moves him.</summary>
     /// <param name="_inputDirection"></param>
