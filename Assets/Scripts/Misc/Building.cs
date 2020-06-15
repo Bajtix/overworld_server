@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-
-    
-
-
     public float hp = 10;
     public float stability = 0;
     
     public List<BuildSlot> placeSlots;
+    public BuildSlot[] defaultPlaceSlots;
+
+    private void Start()
+    {
+        defaultPlaceSlots = new BuildSlot[placeSlots.Count];
+        placeSlots.CopyTo(defaultPlaceSlots);
+    }
 
     private void Update()
     {

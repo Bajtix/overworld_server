@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerBuilder : MonoBehaviour
 {
@@ -120,13 +121,25 @@ public class PlayerBuilder : MonoBehaviour
                     :
                     EnitySpawner.instance.SpawnNewEntity(parts[selectedPart], collider.transform.position, collider.transform.rotation); //spawns the selected building type in the selected slot and gets id.
 
+                Collider[] hitSlots = Physics.OverlapSphere(collider.transform.position, 0.1f, MaskBuilds(buildingType));
 
-                Building b = collider.transform.parent.GetComponent<Building>();
                 BuildSlot newSlot = Server.entities[id].entity.gameObject.AddComponent<BuildSlot>();
-                newSlot.type = BuildSlot.PlaceSlotType.Occupied;
+                newSlot.type = BuildSlot.PlaceSlotType.Occupied; //configure "me" as a slot
 
-                Destroy(collider.gameObject);
-                b.placeSlots[b.placeSlots.IndexOf(slot)] = newSlot;
+                List<Building> buildings = new List<Building>();
+                foreach(Collider col in hitSlots) //list of buildings whom slots were hit
+                {
+                    Building b = col.transform.parent.GetComponent<Building>();
+                    buildings.Add(b);
+                    col.gameObject.SetActive(false);
+                    b.placeSlots[b.placeSlots.IndexOf(slot)] = newSlot;
+                }
+                //Building b = collider.transform.parent.GetComponent<Building>();
+                
+               
+
+                
+                
             }
         }
         else if (collider.GetComponent<TerrainGenerator>() != null)
