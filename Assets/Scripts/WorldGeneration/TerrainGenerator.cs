@@ -40,7 +40,7 @@ public class TerrainGenerator : MonoBehaviour
             if (i % 400 == 0)
                 yield return new WaitForEndOfFrame();
         }
-
+        Debug.Log("GENERATE: SET VERTS OK");
         mesh.vertices = verts;
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();

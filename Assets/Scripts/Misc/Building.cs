@@ -6,7 +6,7 @@ public class Building : MonoBehaviour
 {
     public float hp = 10;
     public float stability = 0;
-    
+
     public List<BuildSlot> placeSlots;
     public BuildSlot[] defaultPlaceSlots;
 

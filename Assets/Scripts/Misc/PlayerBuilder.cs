@@ -99,8 +99,10 @@ public class PlayerBuilder : MonoBehaviour
         {
             if (hit.collider != null)
             {
-                if (hit.collider.GetComponent<Entity>() != null)
+                if (hit.collider.GetComponent<Building>() != null)
+                {
                     EnitySpawner.instance.KillEntity(hit.collider.GetComponent<Entity>().id);
+                }
             }
 
         }
@@ -121,25 +123,25 @@ public class PlayerBuilder : MonoBehaviour
                     :
                     EnitySpawner.instance.SpawnNewEntity(parts[selectedPart], collider.transform.position, collider.transform.rotation); //spawns the selected building type in the selected slot and gets id.
 
-                Collider[] hitSlots = Physics.OverlapSphere(collider.transform.position, 0.1f, MaskBuilds(buildingType));
+                //Collider[] hitSlots = Physics.OverlapSphere(collider.transform.position, 0.1f, MaskBuilds(buildingType));
 
                 BuildSlot newSlot = Server.entities[id].entity.gameObject.AddComponent<BuildSlot>();
                 newSlot.type = BuildSlot.PlaceSlotType.Occupied; //configure "me" as a slot
 
-                List<Building> buildings = new List<Building>();
-                foreach(Collider col in hitSlots) //list of buildings whom slots were hit
+                //List<Building> buildings = new List<Building>();
+                /*foreach(Collider col in hitSlots) //list of buildings whom slots were hit
                 {
                     Building b = col.transform.parent.GetComponent<Building>();
                     buildings.Add(b);
                     col.gameObject.SetActive(false);
                     b.placeSlots[b.placeSlots.IndexOf(slot)] = newSlot;
-                }
+                }*/
                 //Building b = collider.transform.parent.GetComponent<Building>();
-                
-               
 
+                Building b = collider.transform.parent.GetComponent<Building>();
+                b.placeSlots[b.placeSlots.IndexOf(slot)] = newSlot;
                 
-                
+
             }
         }
         else if (collider.GetComponent<TerrainGenerator>() != null)

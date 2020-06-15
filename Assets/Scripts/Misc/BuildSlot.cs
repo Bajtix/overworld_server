@@ -17,8 +17,13 @@ public class BuildSlot : MonoBehaviour
 
     private void Start()
     {
-        if (Physics.OverlapBox(transform.position, GetComponent<BoxCollider>().size/2 -new Vector3(0.1f, 0.1f, 0.1f), Quaternion.identity,LayerMask.GetMask("Building")).Length > 0)
-            gameObject.SetActive(false);
+        /*if (type != PlaceSlotType.Occupied)
+        {
+            GetComponent<BoxCollider>().enabled = false;
+            if (Physics.OverlapBox(transform.position + GetComponent<BoxCollider>().center, GetComponent<BoxCollider>().size / 2 - new Vector3(0.1f, 0.1f, 0.1f), transform.rotation, LayerMask.GetMask("Building", "BuildSlot Foundation", "BuildSlot Wall", "BuildSlot Floor", "BuildSlot Main")).Length > 0)
+                gameObject.SetActive(false);
+            GetComponent<BoxCollider>().enabled = true;
+        }*/
     }
 
 }
