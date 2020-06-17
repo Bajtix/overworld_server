@@ -2,13 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RotaryHeart.Lib.SerializableDictionary; //thank you, bro! It would be so much harder without this lib.
 
 public class NetworkManager : MonoBehaviour
 {
     public static NetworkManager instance;
 
     public GameObject playerPrefab;
-    public GameObject[] entityPrefabs;
+    [System.Serializable]
+    public class _EDIC : SerializableDictionaryBase<string, GameObject> { }
+    public _EDIC entityPrefabs;
     public GameObject projectilePrefab;
 
     private void Awake()
@@ -44,7 +47,7 @@ public class NetworkManager : MonoBehaviour
         return Instantiate(playerPrefab, new Vector3(800f, 400f, 800f), Quaternion.identity).GetComponent<Player>();
     }
 
-    public Entity SpawnNewEntity(Vector3 position,Quaternion rotation, int model,int parentId)
+    public Entity SpawnNewEntity(Vector3 position,Quaternion rotation, string model,int parentId)
     {
         if(parentId != -9999)
             return Instantiate(entityPrefabs[model], position, rotation,Server.entities[parentId].entity.transform).GetComponent<Entity>();

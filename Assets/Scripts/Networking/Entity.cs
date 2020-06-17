@@ -6,12 +6,12 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public int id;
-    public int modelId;
+    public string modelId;
     public int parentId = -1;
     public string additionalData;
     public bool updatePos = true;
 
-    public void Initialize(int id,int modelId, int parentId)
+    public void Initialize(int id,string modelId, int parentId)
     {
         this.id = id;
         this.modelId = modelId;

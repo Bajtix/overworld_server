@@ -445,15 +445,58 @@ MonoBehaviour:
   playerPrefab: {fileID: 4187005777591049097, guid: 28356974c7337f046a4d87eaf2777d62,
     type: 3}
   entityPrefabs:
-  - {fileID: 5168105003427674052, guid: 17c3ab37fc0b80f44880e35cbd9376a2, type: 3}
-  - {fileID: 7878198004873616147, guid: 248b46e9eaf0ef84f98346155897e01f, type: 3}
-  - {fileID: 4152737444133632501, guid: 9f2fd5b8e456bf34395ae8c10ba59aad, type: 3}
-  - {fileID: 4644100740068361823, guid: f04466fe0dd449b44a0188aae78d96e9, type: 3}
-  - {fileID: 1633449946562062394, guid: 7c19102307d90db449d3020aadba5be7, type: 3}
-  - {fileID: 3272350126065309553, guid: 147628f9c99ab144c8f3c6a504b5f2b3, type: 3}
-  - {fileID: 2734702867900939068, guid: 3b764d8415840c94cba55870fcabeb96, type: 3}
-  - {fileID: 718362476609646073, guid: fb462dc1104847e4c9eb5269f4822215, type: 3}
-  - {fileID: 5770007334914014808, guid: 23f3795630288f74fa60d2ba836ce695, type: 3}
+    reorderableList:
+      canAdd: 1
+      canRemove: 1
+      draggable: 1
+      expandable: 1
+      multipleSelection: 1
+      isExpanded: 1
+      label:
+        m_Text: Keys
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 18
+      footerHeight: 13
+      slideEasing: 0.15
+      verticalSpacing: 2
+      showDefaultBackground: 1
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 1
+    _keyValues:
+    - prp_present
+    - vec_rusty-buggy
+    - bld_wall
+    - bld_foundation
+    - bld_floor
+    - bld_stairs
+    - bld_wall_door
+    - bld_wall_window
+    - utl_buildpreview
+    _keys:
+    - prp_present
+    - vec_rusty-buggy
+    - bld_wall
+    - bld_foundation
+    - bld_floor
+    - bld_stairs
+    - bld_wall_door
+    - bld_wall_window
+    - utl_buildpreview
+    _values:
+    - {fileID: 5168105003427674052, guid: 17c3ab37fc0b80f44880e35cbd9376a2, type: 3}
+    - {fileID: 7878198004873616147, guid: 248b46e9eaf0ef84f98346155897e01f, type: 3}
+    - {fileID: 4644100740068361823, guid: f04466fe0dd449b44a0188aae78d96e9, type: 3}
+    - {fileID: 4152737444133632501, guid: 9f2fd5b8e456bf34395ae8c10ba59aad, type: 3}
+    - {fileID: 2734702867900939068, guid: 3b764d8415840c94cba55870fcabeb96, type: 3}
+    - {fileID: 718362476609646073, guid: fb462dc1104847e4c9eb5269f4822215, type: 3}
+    - {fileID: 1633449946562062394, guid: 7c19102307d90db449d3020aadba5be7, type: 3}
+    - {fileID: 3272350126065309553, guid: 147628f9c99ab144c8f3c6a504b5f2b3, type: 3}
+    - {fileID: 5770007334914014808, guid: 23f3795630288f74fa60d2ba836ce695, type: 3}
   projectilePrefab: {fileID: 7859153389591767978, guid: f08613b9a5c37044f8cb2ad66a833ea6,
     type: 3}
 --- !u!4 &1902706400
@@ -482,4 +525,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9b5b607483fd84a92f61bac5cd4a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickToSpawnNew: 0

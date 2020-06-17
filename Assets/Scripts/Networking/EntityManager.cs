@@ -5,11 +5,11 @@ using UnityEngine;
 public class EntityManager
 {
     public int id;
-    public int modelId;
+    public string modelId;
     public int parentId;
     public Entity entity;
 
-    public EntityManager(int id,int modelId,int parentId)
+    public EntityManager(int id,string modelId,int parentId)
     {
         this.id = id;
         this.modelId = modelId;

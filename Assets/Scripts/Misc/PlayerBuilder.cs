@@ -4,12 +4,12 @@ using UnityEngine;
 public class PlayerBuilder : MonoBehaviour
 {
     public BuildSlot.PlaceSlotType buildingType = BuildSlot.PlaceSlotType.Foundation;
-    public int[] parts = {2,3,4,5};
+    public string[] parts;
     public BuildSlot.PlaceSlotType[] types = { BuildSlot.PlaceSlotType.Foundation, BuildSlot.PlaceSlotType.Wall , BuildSlot.PlaceSlotType.Wall, BuildSlot.PlaceSlotType.Floor};
     public int selectedPart = 0;
     public Transform look;
     public Quaternion rot = Quaternion.identity;
-    public int previewID;
+    public string previewID;
 
     private GameObject preview;
 
@@ -146,8 +146,8 @@ public class PlayerBuilder : MonoBehaviour
         }
         else if (collider.GetComponent<TerrainGenerator>() != null)
         {
-            if(buildingType == BuildSlot.PlaceSlotType.Foundation)
-            EnitySpawner.instance.SpawnNewEntity(2, hit.point, Quaternion.LookRotation(Vector3.up));
+            //if(buildingType == BuildSlot.PlaceSlotType.Foundation)
+            //EnitySpawner.instance.SpawnNewEntity(2, hit.point, Quaternion.LookRotation(Vector3.up));
         }
 
 
