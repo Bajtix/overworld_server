@@ -19,7 +19,7 @@ public class EnitySpawner : MonoBehaviour
         RaycastHit hit;
         Physics.Raycast(v, Vector3.down, out hit);
 
-        Server.entities.Add(id, new EntityManager(id, "vc_rusty-buggy", -9999));
+        Server.entities.Add(id, new EntityManager(id, "vec_rusty-buggy", -9999));
         Server.entities[id].Spawn(hit.point + Vector3.up * 10,Quaternion.identity);
 
     }

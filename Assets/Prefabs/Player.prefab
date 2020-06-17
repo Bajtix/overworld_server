@@ -190,12 +190,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 4
-  parts: 020000000300000004000000050000000600000007000000
+  parts:
+  - bld_foundation
+  - bld_wall
+  - bld_wall_door
+  - bld_wall_window
+  - bld_floor
+  - bld_stairs
   types: 040000000100000001000000010000000200000003000000
   selectedPart: 0
   look: {fileID: 7311943217482982376}
   rot: {x: 0, y: 0, z: 0, w: 1}
-  previewID: 8
+  previewID: utl_buildpreview
 --- !u!1 &5549317518423601054
 GameObject:
   m_ObjectHideFlags: 0

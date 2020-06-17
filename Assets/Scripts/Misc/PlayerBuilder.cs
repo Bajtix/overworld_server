@@ -146,8 +146,8 @@ public class PlayerBuilder : MonoBehaviour
         }
         else if (collider.GetComponent<TerrainGenerator>() != null)
         {
-            //if(buildingType == BuildSlot.PlaceSlotType.Foundation)
-            //EnitySpawner.instance.SpawnNewEntity(2, hit.point, Quaternion.LookRotation(Vector3.up));
+            if(buildingType == BuildSlot.PlaceSlotType.Foundation)
+                EnitySpawner.instance.SpawnNewEntity(parts[0], hit.point, Quaternion.LookRotation(Vector3.up));
         }
 
 
