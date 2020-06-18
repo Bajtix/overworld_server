@@ -25,7 +25,7 @@ public class TerrainGenerator : MonoBehaviour
 
     private IEnumerator GenerateCoroutine()
     {
-        Debug.Log("GENERATE: SET VERTS");
+        //Debug.Log("GENERATE: SET VERTS");
         mesh = GetComponent<MeshFilter>().mesh;
         meshCollider = GetComponent<MeshCollider>();
         Vector3[] verts = mesh.vertices;
@@ -40,7 +40,7 @@ public class TerrainGenerator : MonoBehaviour
             if (i % 400 == 0)
                 yield return new WaitForEndOfFrame();
         }
-        Debug.Log("GENERATE: SET VERTS OK");
+        //Debug.Log("GENERATE: SET VERTS OK");
         mesh.vertices = verts;
         mesh.RecalculateBounds();
         mesh.RecalculateNormals();
@@ -53,7 +53,7 @@ public class TerrainGenerator : MonoBehaviour
 
     public IEnumerator SpawnTrees()
     {
-        Debug.Log("GENERATE: SPAWN TREES");
+        //Debug.Log("GENERATE: SPAWN TREES");
 
 
         System.Random r = new System.Random(Mathf.RoundToInt(TerrainSettings.instance.seed + transform.position.x + transform.position.y));
@@ -77,12 +77,12 @@ public class TerrainGenerator : MonoBehaviour
             
             yield return new WaitForEndOfFrame();
         }
-        Debug.Log($"GENERATE: DONE (ChunkCount: {ChunkManager.instance.chunkCount})");
+        //Debug.Log($"GENERATE: DONE (ChunkCount: {ChunkManager.instance.chunkCount})");
     }
 
     public IEnumerator SpawnDetails()
     {
-        Debug.Log("GENERATE: SPAWN DETAILS");
+       // Debug.Log("GENERATE: SPAWN DETAILS");
 
 
         System.Random r = new System.Random(Mathf.RoundToInt(TerrainSettings.instance.seed + transform.position.x + transform.position.y) / 3);
@@ -106,7 +106,7 @@ public class TerrainGenerator : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
-        Debug.Log($"GENERATE: DONE (ChunkCount: {ChunkManager.instance.chunkCount})");
+        //Debug.Log($"GENERATE: DONE (ChunkCount: {ChunkManager.instance.chunkCount})");
     }
 
     float GetPass(float x, float z, float scale, float mult)
@@ -122,7 +122,6 @@ public class TerrainGenerator : MonoBehaviour
     public void AddFeature(GameObject go, bool buffer = true)
     {
         ChunkObject c = go.GetComponent<ChunkObject>(); //to get it to work, assign every ChunkObject prefab the script and add an id.
-        Debug.Log("Znaleziono:" + c);
         c.myId = objects.Count;
         c.chunk = this;
         objects.Add(nid, c);

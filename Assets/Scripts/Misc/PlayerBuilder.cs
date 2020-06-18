@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PlayerBuilder : MonoBehaviour
 {
+    
+
+
     public BuildSlot.PlaceSlotType buildingType = BuildSlot.PlaceSlotType.Foundation;
     public string[] parts;
     public BuildSlot.PlaceSlotType[] types = { BuildSlot.PlaceSlotType.Foundation, BuildSlot.PlaceSlotType.Wall , BuildSlot.PlaceSlotType.Wall, BuildSlot.PlaceSlotType.Floor};
@@ -92,7 +95,7 @@ public class PlayerBuilder : MonoBehaviour
         }
     }
 
-    public void DestroyButton(Transform look)
+    public void DestroyButton()
     {
         RaycastHit hit;
         if (Physics.Raycast(look.position, look.forward, out hit, 10f, LayerMask.GetMask("Building")))

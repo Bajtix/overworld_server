@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public string username;
     public CharacterController controller;
     public PlayerBuilder builder;
+    public PlayerInventory inventory;
     public Transform shootOrigin;
     public Transform look;
     public float gravity = -9.81f;
@@ -153,19 +154,19 @@ public class Player : MonoBehaviour
             Debug.Log($"Set building to mdl {builder.parts[builder.selectedPart]}, build type {builder.types[builder.selectedPart]}");
         }
 
-        if(code == KeyCode.B)
+        if(code == KeyCode.Mouse0)
         {
             if (seatIn == null)
             {
-                builder.BuildButton();
+                inventory.LeftClick();
             }
         }
 
-        if (code == KeyCode.N)
+        if (code == KeyCode.Mouse1)
         {
             if (seatIn == null)
             {
-                builder.DestroyButton(look);
+                inventory.RightClick();
             }
         }
 
@@ -173,7 +174,7 @@ public class Player : MonoBehaviour
         {
             if(seatIn == null)
             {
-                builder.rot *= Quaternion.Euler(0, 0, 90);
+                inventory.Reload();
             }
         }
 

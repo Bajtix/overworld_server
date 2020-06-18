@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 1920120271202843960}
   - component: {fileID: 2319307683833354698}
   - component: {fileID: -1528614529128340363}
+  - component: {fileID: 1962134101382729344}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -146,6 +147,7 @@ MonoBehaviour:
   username: 
   controller: {fileID: 2319307683833354698}
   builder: {fileID: -1528614529128340363}
+  inventory: {fileID: 1962134101382729344}
   shootOrigin: {fileID: 4375789778787327676}
   look: {fileID: 7311943217482982376}
   gravity: -19.62
@@ -202,6 +204,23 @@ MonoBehaviour:
   look: {fileID: 7311943217482982376}
   rot: {x: 0, y: 0, z: 0, w: 1}
   previewID: utl_buildpreview
+--- !u!114 &1962134101382729344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4187005777591049097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551e3462a7e86f94aa674d3ce68db620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory:
+  - {fileID: 11400000, guid: 1474df1577f6a6d47b9923eae1367399, type: 2}
+  selected: 0
+  owner: {fileID: 1920120271202843960}
+  itemInstance: {fileID: 0}
 --- !u!1 &5549317518423601054
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +248,7 @@ Transform:
   m_GameObject: {fileID: 5549317518423601054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.37, z: 0}
-  m_LocalScale: {x: 1, y: 0.17986, z: 0.22177}
+  m_LocalScale: {x: 0.23, y: 0.17986, z: 2.34}
   m_Children: []
   m_Father: {fileID: 6574823444410646575}
   m_RootOrder: 2
