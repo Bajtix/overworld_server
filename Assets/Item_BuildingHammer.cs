@@ -21,10 +21,11 @@ public class Item_BuildingHammer : GameItem
 
     public override void Alternative()
     {
-        itemOwner.builder.selectedPart++;
+        ServerSend.OpenMenu(itemOwner.id, "building_selector");
+        //itemOwner.builder.selectedPart++;
 
-        if (itemOwner.builder.selectedPart == itemOwner.builder.parts.Length)
-            itemOwner.builder.selectedPart = 0;
+        //if (itemOwner.builder.selectedPart == itemOwner.builder.parts.Length)
+            //itemOwner.builder.selectedPart = 0;
 
     }
 

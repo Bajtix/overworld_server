@@ -44,4 +44,13 @@ public class ServerHandle
         Server.clients[_fromClient].player.Key(_code);
     }
 
+    public static void MenuResponse(int _fromClient, Packet _packet)
+    {
+        int response = _packet.ReadInt();
+        Server.clients[_fromClient].player.builder.selectedPart = response;
+        Debug.Log("Reveived menu response");
+        ServerSend.OpenMenu(_fromClient,"building_selector",false);
+    }
+
+
 }

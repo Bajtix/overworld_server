@@ -286,5 +286,15 @@ public class ServerSend
         }
     }
 
+    public static void OpenMenu(int player, string menuName, bool open = true)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.openGUI))
+        {
+            _packet.Write(menuName);
+            _packet.Write(open);
+            SendTCPData(player,_packet);
+        }
+    }
+
     #endregion
 }

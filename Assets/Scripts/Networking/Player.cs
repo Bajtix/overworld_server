@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    
+
+
     public int id;
     public string username;
     public CharacterController controller;
@@ -125,13 +128,15 @@ public class Player : MonoBehaviour
     {
         if (interactTimeout > 0)
             return;
+        
+        
 
         if(code == KeyCode.E)
         {
             if (seatIn == null)
-            {                   
+            {
                 RaycastHit hit;
-                if (Physics.Raycast(look.position, look.forward, out hit, 10f))
+                if (Physics.Raycast(look.position, look.forward, out hit, 6f))
                 {
                     if (hit.collider != null)
                         Interact(hit.collider, hit);
@@ -205,11 +210,7 @@ public class Player : MonoBehaviour
                 seatIn.TakeASeat(this);
             }
         }
-        else if (collider.GetComponent<ChunkObject>() != null)
-        {
-            ChunkObject i = collider.GetComponent<ChunkObject>();
-            i.chunk.RemoveFeature(i.myId);
-        }
+        
         
     }
 

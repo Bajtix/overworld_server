@@ -44,7 +44,9 @@ public class NetworkManager : MonoBehaviour
 
     public Player InstantiatePlayer()
     {
-        return Instantiate(playerPrefab, new Vector3(800f, 400f, 800f), Quaternion.identity).GetComponent<Player>();
+        //RaycastHit hit;
+        //Physics.Raycast(new Vector3(800f, 800f, 800f), Vector3.down, out hit);
+        return Instantiate(playerPrefab, new Vector3(800,400,800), Quaternion.identity).GetComponent<Player>();
     }
 
     public Entity SpawnNewEntity(Vector3 position,Quaternion rotation, string model,int parentId)
