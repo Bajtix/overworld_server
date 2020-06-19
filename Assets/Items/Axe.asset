@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62b336d8ef3c91c40b6d44bc0c1506b2, type: 3}
-  m_Name: Hammer
+  m_Name: Axe
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  name: Hammer
+  name: Axe
   description: 
   maxStackCount: 0
-  model: {fileID: 3118707998004898989, guid: f782bfdf7d55d7d4f9c5cf259c39d918, type: 3}
+  model: {fileID: 5506891476793256898, guid: 8a4193c5a79d5ac4cac87cdcb49bcdfb, type: 3}

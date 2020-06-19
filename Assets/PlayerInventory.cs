@@ -16,25 +16,35 @@ public class PlayerInventory : MonoBehaviour
     }
     public void CycleSelection(int slots)
     {
+
+
+
         selected += slots;
+        Debug.Log($"Adding {slots}, {selected}");
         if (selected >= inventory.Count)
             selected = 0;
         if (selected < 0)
             selected = inventory.Count - 1;
+        Debug.Log($"Adding {slots}, {selected}");
+        if (itemInstance != null)
+        {
+            Debug.Log("Item instance destroyer");
+            Destroy(itemInstance.gameObject);
+        }
 
-        if(itemInstance != null)
-            Destroy(itemInstance);
-
-        Debug.Log("Cycling items");
+        
         itemInstance = Instantiate(inventory[selected].model, transform).GetComponent<GameItem>();
-        Debug.Log("Instantiated new item");
+        //Debug.Log("Instantiated new item");
         itemInstance.itemOwner = owner;
-        Debug.Log("Set item owner. " + itemInstance.itemOwner);
+        //Debug.Log("Set item owner. " + itemInstance.itemOwner);
+        Debug.Log("Cycling items " + itemInstance.name);
+
+        ServerSend.PlayerInfo(owner.id, inventory[selected].name);
     }
 
     private void Update()
     {
-        if(itemInstance!=null)
+        if (itemInstance != null)
             itemInstance.Tick();
     }
 
@@ -56,4 +66,9 @@ public class PlayerInventory : MonoBehaviour
             itemInstance.Reload();
     }
 
+    public void Alternative()
+    {
+        if (itemInstance != null)
+            itemInstance.Alternative();
+    }
 }

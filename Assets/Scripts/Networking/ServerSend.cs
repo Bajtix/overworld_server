@@ -276,5 +276,15 @@ public class ServerSend
     }
 
 
+    public static void PlayerInfo(int player, string toolName)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.playerInfo))
+        {
+            _packet.Write(player);
+            _packet.Write(toolName);
+            SendTCPDataToAll(_packet);
+        }
+    }
+
     #endregion
 }

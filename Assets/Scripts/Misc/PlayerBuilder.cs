@@ -14,7 +14,7 @@ public class PlayerBuilder : MonoBehaviour
     public Quaternion rot = Quaternion.identity;
     public string previewID;
 
-    private GameObject preview;
+    public GameObject preview;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class PlayerBuilder : MonoBehaviour
         preview = Server.entities[id].entity.gameObject;
     }
 
-    private void Update()
+    public void UpdatePreview()
     {
         buildingType = types[selectedPart];
         preview.GetComponent<Entity>().additionalData = parts[selectedPart].ToString();

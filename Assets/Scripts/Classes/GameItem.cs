@@ -36,6 +36,11 @@ public class GameItem : MonoBehaviour
 
     }
 
+    public virtual void Alternative()
+    {
+
+    }
+
     public virtual void Selected()
     {
 

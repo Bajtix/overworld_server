@@ -144,14 +144,12 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(code == KeyCode.T)
+        if(code == KeyCode.Q)
         {
-            builder.selectedPart++;
-            
-            if (builder.selectedPart == builder.parts.Length)
-                builder.selectedPart = 0;
-
-            Debug.Log($"Set building to mdl {builder.parts[builder.selectedPart]}, build type {builder.types[builder.selectedPart]}");
+            if (seatIn == null)
+            {
+                inventory.Alternative();
+            }
         }
 
         if(code == KeyCode.Mouse0)
@@ -175,6 +173,22 @@ public class Player : MonoBehaviour
             if(seatIn == null)
             {
                 inventory.Reload();
+            }
+        }
+
+        if (code == KeyCode.PageUp)
+        {
+            if (seatIn == null)
+            {
+                inventory.CycleSelection(1);
+            }
+        }
+
+        if (code == KeyCode.PageDown)
+        {
+            if (seatIn == null)
+            {
+                inventory.CycleSelection(-1);
             }
         }
 
