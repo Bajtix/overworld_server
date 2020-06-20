@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameItem : MonoBehaviour
 {
     public Player itemOwner;
+    public Item myItem;
 
     private void OnDestroy()
     {

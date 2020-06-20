@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemOwner: {fileID: 0}
+  myItem: {fileID: 11400000, guid: 0ed98ee4303d0044aafb54d2b18052fb, type: 2}

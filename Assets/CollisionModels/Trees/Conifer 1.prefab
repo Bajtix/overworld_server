@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 6139265955295679987}
   - component: {fileID: 4635073166616510127}
   - component: {fileID: 4541010902752504499}
+  - component: {fileID: 1047062294039406148}
   m_Layer: 0
   m_Name: Conifer 1
   m_TagString: Untagged
@@ -365,6 +366,22 @@ MonoBehaviour:
   chunk: {fileID: 0}
   myId: 0
   model: 0
+--- !u!114 &1047062294039406148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7163067579204544480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc03108386344c418cf1736e81d784c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 300
+  drop: {fileID: 0}
+  itemTag: 
+  fallingTreeEntity: 
 --- !u!1 &7300803513257069988
 GameObject:
   m_ObjectHideFlags: 0

@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 9209318632686356247}
   - component: {fileID: 7687091681232645195}
   - component: {fileID: 771420250009196449}
+  - component: {fileID: 4091031175195439469}
   m_Layer: 0
   m_Name: Broadleaf 2
   m_TagString: Untagged
@@ -368,6 +369,22 @@ MonoBehaviour:
   chunk: {fileID: 0}
   myId: 0
   model: 0
+--- !u!114 &4091031175195439469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302226978487596292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc03108386344c418cf1736e81d784c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 500
+  drop: {fileID: 0}
+  itemTag: 
+  fallingTreeEntity: 
 --- !u!1 &5598552889170077533
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,8 +19,7 @@ public class Item_Axe : GameItem
             if (hit.collider != null)
                 if (hit.collider.GetComponent<ColliderPart>() != null)
                 {
-                    ChunkObject i = hit.collider.GetComponent<ColliderPart>().obj.GetComponent<ChunkObject>();
-                    i.chunk.RemoveFeature(i.myId);
+                    hit.collider.GetComponent<ColliderPart>().obj.GetComponent<Resource>().Hit(myItem);
                 }
         }
     }

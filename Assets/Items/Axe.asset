@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b336d8ef3c91c40b6d44bc0c1506b2, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
   name: Axe
+  icon: {fileID: 0}
   description: 
+  itemTag: 
   maxStackCount: 0
   model: {fileID: 5506891476793256898, guid: 8a4193c5a79d5ac4cac87cdcb49bcdfb, type: 3}
+  damage: 10
+  durability: 0
