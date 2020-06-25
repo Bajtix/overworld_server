@@ -27,13 +27,23 @@ public class PlayerBuilder : MonoBehaviour
         buildingType = types[selectedPart];
         preview.GetComponent<Entity>().additionalData = parts[selectedPart].ToString();
         RaycastHit hit;
-        if (Physics.Raycast(look.position, look.forward, out hit, 10f, MaskBuilds(buildingType,false)))
+        if (Physics.Raycast(look.position, look.forward, out hit, 10f, MaskBuilds(buildingType)))
         {
-            preview.transform.position = hit.collider.transform.position;
-            if (buildingType == BuildSlot.PlaceSlotType.Main)
-                preview.transform.rotation = hit.collider.transform.rotation * rot;
+            List<int> layers = new List<int>();
+            layers.AddRange(new int[] { LayerMask.NameToLayer("BuildSlot Foundation"), LayerMask.NameToLayer("BuildSlot Wall"), LayerMask.NameToLayer("BuildSlot Floor"), LayerMask.NameToLayer("BuildSlot Inner") });
+            if (layers.Contains(hit.collider.gameObject.layer))
+            {
+                preview.transform.position = hit.collider.transform.position;
+                if (buildingType == BuildSlot.PlaceSlotType.Main)
+                    preview.transform.rotation = hit.collider.transform.rotation * rot;
+                else
+                    preview.transform.rotation = hit.collider.transform.rotation;
+            }
             else
-                preview.transform.rotation = hit.collider.transform.rotation;
+            {
+                preview.transform.position = Vector3.zero;
+            }
+            
         }
         else
             preview.GetComponent<Entity>().additionalData = "0";
@@ -46,15 +56,15 @@ public class PlayerBuilder : MonoBehaviour
             switch (t)
             {
                 case BuildSlot.PlaceSlotType.Foundation:
-                    return LayerMask.GetMask("BuildSlot Foundation", "Default");
+                    return LayerMask.GetMask("BuildSlot Foundation", "Default", "Building");
                 case BuildSlot.PlaceSlotType.Wall:
-                    return LayerMask.GetMask("BuildSlot Wall", "Default");
+                    return LayerMask.GetMask("BuildSlot Wall", "Default", "Building");
                 case BuildSlot.PlaceSlotType.Floor:
-                    return LayerMask.GetMask("BuildSlot Floor", "Default");
+                    return LayerMask.GetMask("BuildSlot Floor", "Default", "Building");
                 case BuildSlot.PlaceSlotType.Main:
-                    return LayerMask.GetMask("BuildSlot Inner", "Default");
+                    return LayerMask.GetMask("BuildSlot Inner", "Default", "Building");
                 default:
-                    return LayerMask.GetMask("Default");
+                    return LayerMask.GetMask("Default", "Building");
             }
         }
         else
@@ -62,15 +72,15 @@ public class PlayerBuilder : MonoBehaviour
             switch (t)
             {
                 case BuildSlot.PlaceSlotType.Foundation:
-                    return LayerMask.GetMask("BuildSlot Foundation");
+                    return LayerMask.GetMask("BuildSlot Foundation", "Building");
                 case BuildSlot.PlaceSlotType.Wall:
-                    return LayerMask.GetMask("BuildSlot Wall");
+                    return LayerMask.GetMask("BuildSlot Wall", "Building");
                 case BuildSlot.PlaceSlotType.Floor:
-                    return LayerMask.GetMask("BuildSlot Floor");
+                    return LayerMask.GetMask("BuildSlot Floor", "Building");
                 case BuildSlot.PlaceSlotType.Main:
-                    return LayerMask.GetMask("BuildSlot Inner");
+                    return LayerMask.GetMask("BuildSlot Inner", "Building");
                 default:
-                    return LayerMask.GetMask("Default");
+                    return LayerMask.GetMask("Default", "Building");
             }
         }
     }
@@ -82,7 +92,7 @@ public class PlayerBuilder : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(look.position, look.forward, out hit, 10f, MaskBuilds(buildingType)))
         {
-            if (hit.collider != null)
+            if (hit.collider != null && hit.collider.gameObject.tag != "Building")
             {
                 Build(hit.collider, hit);
             }

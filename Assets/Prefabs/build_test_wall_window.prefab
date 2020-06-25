@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6793772450331790970}
   m_Layer: 13
   m_Name: build_test_wall_window
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  modelId: 5
+  modelId: 
   parentId: -1
   additionalData: 
   updatePos: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  defaultPlaceSlots: []
 --- !u!64 &6793772450331790970
 MeshCollider:
   m_ObjectHideFlags: 0

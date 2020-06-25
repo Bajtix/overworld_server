@@ -210,6 +210,11 @@ public class Player : MonoBehaviour
                 seatIn.TakeASeat(this);
             }
         }
+
+        if(collider.GetComponent<Interactable>() != null)
+        {
+            collider.GetComponent<Interactable>().Interact();
+        }
         
         
     }

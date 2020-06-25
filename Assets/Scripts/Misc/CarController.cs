@@ -27,7 +27,7 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        GetComponent<Entity>().additionalData = (driverSeat.horizontal * turnAngle).ToString();
+        GetComponent<Entity>().additionalData = (driverSeat.horizontal * turnAngle).ToString() + ":" + motorWheels[0].rpm.ToString();
         steered = driverSeat.controller != null;
         if(!steered)
         {

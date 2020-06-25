@@ -477,6 +477,9 @@ MonoBehaviour:
     - bld_wall_door
     - bld_wall_window
     - utl_buildpreview
+    - vec_rusty-truck
+    - prp_cargobob
+    - prp_container
     _keys:
     - prp_present
     - vec_rusty-buggy
@@ -487,6 +490,9 @@ MonoBehaviour:
     - bld_wall_door
     - bld_wall_window
     - utl_buildpreview
+    - vec_rusty-truck
+    - prp_cargobob
+    - prp_container
     _values:
     - {fileID: 5168105003427674052, guid: 17c3ab37fc0b80f44880e35cbd9376a2, type: 3}
     - {fileID: 7878198004873616147, guid: 248b46e9eaf0ef84f98346155897e01f, type: 3}
@@ -497,6 +503,9 @@ MonoBehaviour:
     - {fileID: 1633449946562062394, guid: 7c19102307d90db449d3020aadba5be7, type: 3}
     - {fileID: 3272350126065309553, guid: 147628f9c99ab144c8f3c6a504b5f2b3, type: 3}
     - {fileID: 5770007334914014808, guid: 23f3795630288f74fa60d2ba836ce695, type: 3}
+    - {fileID: 5580710661981047151, guid: 7a308e36372d34142bb7fa6d889d9313, type: 3}
+    - {fileID: 6648845698684088447, guid: 238876842e8a5be44b4af5fd391cc696, type: 3}
+    - {fileID: 6973429722010034319, guid: cd050b28aa27e2c43bac0e799dbbadc6, type: 3}
   projectilePrefab: {fileID: 7859153389591767978, guid: f08613b9a5c37044f8cb2ad66a833ea6,
     type: 3}
 --- !u!4 &1902706400
@@ -525,3 +534,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9b5b607483fd84a92f61bac5cd4a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawn: 0

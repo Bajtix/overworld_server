@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b336d8ef3c91c40b6d44bc0c1506b2, type: 3}
+  m_Name: Air Caller
+  m_EditorClassIdentifier: 
+  name: Air Caller
+  icon: {fileID: 0}
+  description: 
+  itemTag: 
+  maxStackCount: 0
+  model: {fileID: 4088200419146272585, guid: 9566fbacd13c78e4c80a3c9d2ba9f96f, type: 3}
+  damage: 0
+  durability: 0

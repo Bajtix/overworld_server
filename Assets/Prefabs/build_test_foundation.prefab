@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 3983224100123195120}
   m_Layer: 13
   m_Name: build_test_foundation
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  modelId: 2
+  modelId: 
   parentId: -1
   additionalData: 
   updatePos: 0

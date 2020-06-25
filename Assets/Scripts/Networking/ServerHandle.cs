@@ -46,10 +46,12 @@ public class ServerHandle
 
     public static void MenuResponse(int _fromClient, Packet _packet)
     {
+        string menu = _packet.ReadString();
         int response = _packet.ReadInt();
-        Server.clients[_fromClient].player.builder.selectedPart = response;
+
+        MenuResponseHandler.handlers[menu].Invoke(_fromClient,response);
         Debug.Log("Reveived menu response");
-        ServerSend.OpenMenu(_fromClient,"building_selector",false);
+        ServerSend.OpenMenu(_fromClient,menu,false);
     }
 
 

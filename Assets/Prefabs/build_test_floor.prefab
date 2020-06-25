@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 6256186881788437047}
   m_Layer: 13
   m_Name: build_test_floor
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
