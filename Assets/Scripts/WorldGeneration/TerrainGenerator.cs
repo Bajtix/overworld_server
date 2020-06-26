@@ -56,9 +56,9 @@ public class TerrainGenerator : MonoBehaviour
         //Debug.Log("GENERATE: SPAWN TREES");
 
 
-        System.Random r = new System.Random(Mathf.RoundToInt(TerrainSettings.instance.seed + transform.position.x + transform.position.y));
+        System.Random r = new System.Random(Mathf.RoundToInt(TerrainSettings.instance.seed + transform.position.x + transform.position.z));
 
-        float densityForChunk = Mathf.Pow(Mathf.PerlinNoise(transform.position.x * 0.112523f, transform.position.z * 0.112523f), 1.69f) * 25;
+        float densityForChunk = Mathf.Pow(Mathf.PerlinNoise(transform.position.x * 0.000523f, transform.position.z * 0.000523f), 1.69f) * 25;
 
         for (int i = 0; i < densityForChunk; i++)
         {
@@ -85,7 +85,7 @@ public class TerrainGenerator : MonoBehaviour
        // Debug.Log("GENERATE: SPAWN DETAILS");
 
 
-        System.Random r = new System.Random(Mathf.RoundToInt(TerrainSettings.instance.seed + transform.position.x + transform.position.y) / 3);
+        System.Random r = new System.Random(Mathf.RoundToInt(TerrainSettings.instance.seed + transform.position.x + transform.position.z) / 3);
 
         float densityForChunk = r.Next(0, 3);
 

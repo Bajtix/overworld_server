@@ -27,9 +27,10 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        GetComponent<Entity>().additionalData = (driverSeat.horizontal * turnAngle).ToString() + ":" + motorWheels[0].rpm.ToString();
+        
         steered = driverSeat.controller != null;
-        if(!steered)
+        GetComponent<Entity>().additionalData = (driverSeat.horizontal * turnAngle).ToString() + ":" + motorWheels[0].rpm.ToString() + ":" + steered.ToString();
+        if (!steered)
         {
             rb.drag = 3;
             foreach (WheelCollider wheel in motorWheels)

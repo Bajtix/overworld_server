@@ -24,7 +24,8 @@ public class DeliveryHelicopter : MonoBehaviour
                 transform.position += -transform.up * 0.2f;
                 if (transform.position.y < deliverTo.y - 170)
                 {
-                    container.GetComponent<Entity>().additionalData = "";
+                    if(container != null)
+                        container.GetComponent<Entity>().additionalData = "";
                     Destroy(container);
                     way = true;
                 }
