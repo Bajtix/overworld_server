@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 420
-  drop: {fileID: 0}
+  drop: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
   itemTag: 
   fallingTreeEntity: 
 --- !u!1 &7300803513257069988

@@ -19,10 +19,11 @@ public class Item_Axe : GameItem
             if (hit.collider != null)
                 if (hit.collider.GetComponent<ColliderPart>() != null)
                 {
-                    hit.collider.GetComponent<ColliderPart>().obj.GetComponent<Resource>().Hit(myItem);
+                    hit.collider.GetComponent<ColliderPart>().obj.GetComponent<Resource>().Hit(myItem, this);
                 }
         }
     }
 
-    
+
+
 }

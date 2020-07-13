@@ -54,5 +54,13 @@ public class ServerHandle
         ServerSend.OpenMenu(_fromClient,menu,false);
     }
 
+    public static void InventoryRequest(int _fromClient, Packet _packet)
+    {
+        ItemStack[] stacks = Server.clients[_fromClient].player.inventorySystem.stacks;
+        int stacksLength = stacks.Length;
+
+        ServerSend.PlayerInventory(_fromClient, stacksLength, stacks);
+    }
+
 
 }

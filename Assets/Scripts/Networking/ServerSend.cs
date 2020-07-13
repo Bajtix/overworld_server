@@ -61,6 +61,8 @@ public class ServerSend
             Server.clients[i].udp.SendData(_packet);
         }
     }
+
+
     /// <summary>Sends a packet to all clients except one via UDP.</summary>
     /// <param name="_exceptClient">The client to NOT send the data to.</param>
     /// <param name="_packet">The packet to send.</param>
@@ -293,6 +295,29 @@ public class ServerSend
             _packet.Write(menuName);
             _packet.Write(open);
             SendTCPData(player,_packet);
+        }
+    }
+
+    public static void PlayerInventory(int fromClient, int stacksLength, ItemStack[] stacks)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.inventory))
+        {
+            _packet.Write(stacksLength);
+            for(int i = 0; i < stacksLength; i++)
+            {
+                if(stacks[i] == null)
+                {
+                    _packet.Write("none");
+                    _packet.Write(0);
+                }
+                else
+                {
+                    _packet.Write(stacks[i].item.name);
+                    _packet.Write(stacks[i].count);
+                }
+                
+            }
+            SendTCPData(fromClient, _packet);
         }
     }
 

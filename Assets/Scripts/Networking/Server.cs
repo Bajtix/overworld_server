@@ -134,7 +134,8 @@ public class Server
             { (int)ClientPackets.playerMovement, ServerHandle.PlayerMovement },
             { (int)ClientPackets.spawnCar, ServerHandle.SpawnCar },
             { (int)ClientPackets.interact, ServerHandle.Interact },
-            { (int)ClientPackets.menuResponse, ServerHandle.MenuResponse }
+            { (int)ClientPackets.menuResponse, ServerHandle.MenuResponse },
+            { (int)ClientPackets.invReq, ServerHandle.InventoryRequest }
         };
         Debug.Log("Initialized packets.");
     }

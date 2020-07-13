@@ -107,6 +107,8 @@ GameObject:
   - component: {fileID: 2319307683833354698}
   - component: {fileID: -1528614529128340363}
   - component: {fileID: 1962134101382729344}
+  - component: {fileID: 4721983753050473027}
+  - component: {fileID: 4442169861615554830}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -150,6 +152,7 @@ MonoBehaviour:
   inventory: {fileID: 1962134101382729344}
   shootOrigin: {fileID: 4375789778787327676}
   look: {fileID: 7311943217482982376}
+  inventorySystem: {fileID: 4721983753050473027}
   gravity: -19.62
   moveSpeed: 4
   jumpSpeed: 9
@@ -200,6 +203,37 @@ MonoBehaviour:
   - bld_floor
   - bld_stairs
   types: 040000000100000001000000010000000200000003000000
+  buildingParts:
+  - part: bld_foundation
+    type: 4
+    cost:
+      item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
+      count: 30
+  - part: bld_wall
+    type: 1
+    cost:
+      item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
+      count: 20
+  - part: bld_wall_door
+    type: 1
+    cost:
+      item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
+      count: 15
+  - part: bld_wall_window
+    type: 1
+    cost:
+      item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
+      count: 18
+  - part: bld_floor
+    type: 2
+    cost:
+      item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
+      count: 10
+  - part: bld_stairs
+    type: 3
+    cost:
+      item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
+      count: 20
   selectedPart: 0
   look: {fileID: 7311943217482982376}
   rot: {x: 0, y: 0, z: 0, w: 1}
@@ -217,13 +251,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551e3462a7e86f94aa674d3ce68db620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toolBarSize: 4
   inventory:
   - {fileID: 11400000, guid: 1474df1577f6a6d47b9923eae1367399, type: 2}
   - {fileID: 11400000, guid: 0ed98ee4303d0044aafb54d2b18052fb, type: 2}
   - {fileID: 11400000, guid: 20c0f0184b5983a44855b647b686a3b7, type: 2}
+  - {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
   selected: 0
   owner: {fileID: 1920120271202843960}
   itemInstance: {fileID: 0}
+--- !u!114 &4721983753050473027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4187005777591049097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a626dea628dfe47927e615ebf98832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stacks: []
+  toolbar: {fileID: 1962134101382729344}
+  inventorySize: 20
+--- !u!114 &4442169861615554830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4187005777591049097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9fca1beff2fe1c40ad871772525c3c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 20c0f0184b5983a44855b647b686a3b7, type: 2}
+  - {fileID: 11400000, guid: 0ed98ee4303d0044aafb54d2b18052fb, type: 2}
+  - {fileID: 11400000, guid: 1474df1577f6a6d47b9923eae1367399, type: 2}
+  inventory: {fileID: 4721983753050473027}
 --- !u!1 &5549317518423601054
 GameObject:
   m_ObjectHideFlags: 0

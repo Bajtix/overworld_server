@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInventory : MonoBehaviour
+public class PlayerToolbar : MonoBehaviour
 {
-    public List<Item> inventory;
+    public int toolBarSize = 4;
+    public Item[] inventory;
     public int selected;
     public Player owner;
     public GameItem itemInstance;
@@ -13,6 +14,7 @@ public class PlayerInventory : MonoBehaviour
     private void Start()
     {
         CycleSelection(0);
+        inventory = new Item[toolBarSize];
     }
     public void CycleSelection(int slots)
     {
@@ -20,26 +22,29 @@ public class PlayerInventory : MonoBehaviour
 
 
         selected += slots;
-        Debug.Log($"Adding {slots}, {selected}");
-        if (selected >= inventory.Count)
+        //Debug.Log($"Adding {slots}, {selected}");
+        if (selected >= inventory.Length)
             selected = 0;
         if (selected < 0)
-            selected = inventory.Count - 1;
-        Debug.Log($"Adding {slots}, {selected}");
+            selected = inventory.Length - 1;
+        //Debug.Log($"Adding {slots}, {selected}");
         if (itemInstance != null)
         {
             Debug.Log("Item instance destroyer");
             Destroy(itemInstance.gameObject);
         }
 
-        
-        itemInstance = Instantiate(inventory[selected].model, transform).GetComponent<GameItem>();
-        //Debug.Log("Instantiated new item");
-        itemInstance.itemOwner = owner;
-        //Debug.Log("Set item owner. " + itemInstance.itemOwner);
-        Debug.Log("Cycling items " + itemInstance.name);
-
-        ServerSend.PlayerInfo(owner.id, inventory[selected].name);
+        if (inventory[selected] != null)
+        {
+            itemInstance = Instantiate(inventory[selected].model, transform).GetComponent<GameItem>();
+            //Debug.Log("Instantiated new item");
+            itemInstance.itemOwner = owner;
+            //Debug.Log("Set item owner. " + itemInstance.itemOwner);
+            Debug.Log("Cycling items " + itemInstance.name);
+            ServerSend.PlayerInfo(owner.id, inventory[selected].name);
+        }
+        else
+            ServerSend.PlayerInfo(owner.id, "none");
     }
 
     private void Update()

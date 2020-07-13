@@ -14,12 +14,12 @@ public class Resource : MonoBehaviour
         spawnHp = hp;
     }
 
-    public virtual void Hit(Item heldItem)
+    public virtual void Hit(Item heldItem, GameItem instance)
     {
         hp -= heldItem.damage;
     }
 
-    public virtual void Interact(Item heldItem)
+    public virtual void Interact(Item heldItem, GameItem instance)
     {
 
     }
