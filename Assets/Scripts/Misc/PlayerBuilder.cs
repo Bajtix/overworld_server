@@ -23,17 +23,20 @@ public class PlayerBuilder : MonoBehaviour
     public Transform look;
     public Quaternion rot = Quaternion.identity;
     public string previewID;
-
+    private Player player;
     public GameObject preview;
 
     private void Start()
     {
         int id = EnitySpawner.instance.SpawnNewEntity(previewID, transform.position, transform.rotation);
         preview = Server.entities[id].entity.gameObject;
+        player = GetComponent<Player>();
     }
 
     public void UpdatePreview()
     {
+        
+
         buildingType = buildingParts[selectedPart].type;
         preview.GetComponent<Entity>().additionalData = buildingParts[selectedPart].part.ToString();
         RaycastHit hit;
@@ -98,20 +101,27 @@ public class PlayerBuilder : MonoBehaviour
     public void BuildButton()
     {
         
-        
-        RaycastHit hit;
-        if (Physics.Raycast(look.position, look.forward, out hit, 10f, MaskBuilds(buildingType)))
+        if (player.inventorySystem.HasItem(buildingParts[selectedPart].cost.item, buildingParts[selectedPart].cost.count))
         {
-            if (hit.collider != null && hit.collider.gameObject.tag != "Building")
+            player.inventorySystem.RemoveItem(buildingParts[selectedPart].cost.item, buildingParts[selectedPart].cost.count);
+            RaycastHit hit;
+            if (Physics.Raycast(look.position, look.forward, out hit, 10f, MaskBuilds(buildingType)))
             {
-                Build(hit.collider, hit);
-            }
+                if (hit.collider != null && hit.collider.gameObject.tag != "Building")
+                {
+                    Build(hit.collider, hit);
+                }
 
+            }
+            else
+            {
+                hit.point = look.position + look.forward * 10;
+                Build(null, hit);
+            }
         }
         else
         {
-            hit.point = look.position + look.forward * 10;
-            Build(null, hit);
+            ServerSend.SendInfo(player.id, "Can't afford. Building Cost: " + buildingParts[selectedPart].cost.count + " x " + buildingParts[selectedPart].cost.item.name);
         }
     }
 

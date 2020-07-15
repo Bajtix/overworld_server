@@ -324,5 +324,14 @@ public class ServerSend
         }
     }
 
+    public static void SendInfo(int player, string info)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.info))
+        {
+            _packet.Write(info);
+            SendUDPData(player, _packet);
+        }
+    }
+
     #endregion
 }
