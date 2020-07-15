@@ -312,7 +312,10 @@ public class ServerSend
                 }
                 else
                 {
-                    _packet.Write(stacks[i].item.name);
+                    if (stacks[i].item != null)
+                        _packet.Write(stacks[i].item.name);
+                    else
+                        _packet.Write("none");
                     _packet.Write(stacks[i].count);
                 }
                 

@@ -195,14 +195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 4
-  parts:
-  - bld_foundation
-  - bld_wall
-  - bld_wall_door
-  - bld_wall_window
-  - bld_floor
-  - bld_stairs
-  types: 040000000100000001000000010000000200000003000000
   buildingParts:
   - part: bld_foundation
     type: 4
@@ -274,7 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stacks: []
   toolbar: {fileID: 1962134101382729344}
-  inventorySize: 20
+  inventorySize: 40
 --- !u!114 &4442169861615554830
 MonoBehaviour:
   m_ObjectHideFlags: 0

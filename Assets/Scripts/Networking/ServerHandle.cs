@@ -62,5 +62,12 @@ public class ServerHandle
         ServerSend.PlayerInventory(_fromClient, stacksLength, stacks);
     }
 
+    public static void InventoryMod(int _fromClient, Packet _packet)
+    {
+        int from = _packet.ReadInt();
+        int to = _packet.ReadInt();
+        Server.clients[_fromClient].player.inventorySystem.Transfer(from, to);
+    }
+
 
 }

@@ -19,8 +19,10 @@ public class InventorySystem : MonoBehaviour
     {
         for (int i = 0; i < toolbar.toolBarSize; i++)
         {
-            if(stacks[i] != null)
+            if (stacks[i] != null)
                 toolbar.inventory[i] = stacks[i].item;
+            else
+                toolbar.inventory[i] = null;
         }
     }
 
@@ -29,7 +31,7 @@ public class InventorySystem : MonoBehaviour
         Debug.Log("Adding item " + item.name);
         for (int i = 0; i < stacks.Length; i++)
         {
-            if (stacks[i] != null)
+            if (stacks[i] != null && stacks[i].count != 0)
             {
                 if (stacks[i].item == item)
                 {
@@ -107,5 +109,20 @@ public class InventorySystem : MonoBehaviour
     public bool HasItem(Item item)
     {
         return CountItem(item) > 0;
+    }
+
+    public void Transfer(int from, int to)
+    {
+        if (stacks[to] == null)
+        {
+            stacks[to] = stacks[from];
+            stacks[from] = null;
+        }
+        else
+        {
+            ItemStack s = stacks[to];
+            stacks[to] = stacks[from];
+            stacks[from] = s;
+        }
     }
 }
