@@ -7,25 +7,38 @@ public class PlayerBuilder : MonoBehaviour
 
 
     public BuildSlot.PlaceSlotType buildingType = BuildSlot.PlaceSlotType.Foundation;
-    public string[] parts;
-    public BuildSlot.PlaceSlotType[] types = { BuildSlot.PlaceSlotType.Foundation, BuildSlot.PlaceSlotType.Wall , BuildSlot.PlaceSlotType.Wall, BuildSlot.PlaceSlotType.Floor};
+    [System.Serializable]
+    public class BuildingPart
+    {
+        public string part;
+        public BuildSlot.PlaceSlotType type;
+        public ItemStack cost;
+    }
+
+    //public string[] parts;
+    //public BuildSlot.PlaceSlotType[] types = { BuildSlot.PlaceSlotType.Foundation, BuildSlot.PlaceSlotType.Wall , BuildSlot.PlaceSlotType.Wall, BuildSlot.PlaceSlotType.Floor};
+
+    public BuildingPart[] buildingParts;
     public int selectedPart = 0;
     public Transform look;
     public Quaternion rot = Quaternion.identity;
     public string previewID;
-
+    private Player player;
     public GameObject preview;
 
     private void Start()
     {
         int id = EnitySpawner.instance.SpawnNewEntity(previewID, transform.position, transform.rotation);
         preview = Server.entities[id].entity.gameObject;
+        player = GetComponent<Player>();
     }
 
     public void UpdatePreview()
     {
-        buildingType = types[selectedPart];
-        preview.GetComponent<Entity>().additionalData = parts[selectedPart].ToString();
+        
+
+        buildingType = buildingParts[selectedPart].type;
+        preview.GetComponent<Entity>().additionalData = buildingParts[selectedPart].part.ToString();
         RaycastHit hit;
         if (Physics.Raycast(look.position, look.forward, out hit, 10f, MaskBuilds(buildingType)))
         {
@@ -88,20 +101,27 @@ public class PlayerBuilder : MonoBehaviour
     public void BuildButton()
     {
         
-        
-        RaycastHit hit;
-        if (Physics.Raycast(look.position, look.forward, out hit, 10f, MaskBuilds(buildingType)))
+        if (player.inventorySystem.HasItem(buildingParts[selectedPart].cost.item, buildingParts[selectedPart].cost.count))
         {
-            if (hit.collider != null && hit.collider.gameObject.tag != "Building")
+            player.inventorySystem.RemoveItem(buildingParts[selectedPart].cost.item, buildingParts[selectedPart].cost.count);
+            RaycastHit hit;
+            if (Physics.Raycast(look.position, look.forward, out hit, 10f, MaskBuilds(buildingType)))
             {
-                Build(hit.collider, hit);
-            }
+                if (hit.collider != null && hit.collider.gameObject.tag != "Building")
+                {
+                    Build(hit.collider, hit);
+                }
 
+            }
+            else
+            {
+                hit.point = look.position + look.forward * 10;
+                Build(null, hit);
+            }
         }
         else
         {
-            hit.point = look.position + look.forward * 10;
-            Build(null, hit);
+            ServerSend.SendInfo(player.id, "Can't afford. Building Cost: " + buildingParts[selectedPart].cost.count + " x " + buildingParts[selectedPart].cost.item.name);
         }
     }
 
@@ -132,9 +152,9 @@ public class PlayerBuilder : MonoBehaviour
             {
                    
                 int id = buildingType == BuildSlot.PlaceSlotType.Main ? 
-                    EnitySpawner.instance.SpawnNewEntity(parts[selectedPart], collider.transform.position, collider.transform.rotation * rot) 
+                    EnitySpawner.instance.SpawnNewEntity(buildingParts[selectedPart].part, collider.transform.position, collider.transform.rotation * rot) 
                     :
-                    EnitySpawner.instance.SpawnNewEntity(parts[selectedPart], collider.transform.position, collider.transform.rotation); //spawns the selected building type in the selected slot and gets id.
+                    EnitySpawner.instance.SpawnNewEntity(buildingParts[selectedPart].part, collider.transform.position, collider.transform.rotation); //spawns the selected building type in the selected slot and gets id.
 
                 //Collider[] hitSlots = Physics.OverlapSphere(collider.transform.position, 0.1f, MaskBuilds(buildingType));
 
@@ -160,7 +180,7 @@ public class PlayerBuilder : MonoBehaviour
         else if (collider.GetComponent<TerrainGenerator>() != null)
         {
             if(buildingType == BuildSlot.PlaceSlotType.Foundation)
-                EnitySpawner.instance.SpawnNewEntity(parts[0], hit.point, Quaternion.LookRotation(Vector3.up));
+                EnitySpawner.instance.SpawnNewEntity(buildingParts[0].part, hit.point, Quaternion.LookRotation(Vector3.up));
         }
 
 

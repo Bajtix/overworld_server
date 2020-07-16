@@ -11,9 +11,10 @@ public class Player : MonoBehaviour
     public string username;
     public CharacterController controller;
     public PlayerBuilder builder;
-    public PlayerInventory inventory;
+    public PlayerToolbar inventory;
     public Transform shootOrigin;
     public Transform look;
+    public InventorySystem inventorySystem;
     public float gravity = -9.81f;
     public float moveSpeed = 5f;
     public float jumpSpeed = 5f;

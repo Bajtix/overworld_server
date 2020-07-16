@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Stack : MonoBehaviour
+public class ItemStack
 {
     public Item item;
     public int count;
 
-    public Stack(Item item, int v)
+    public ItemStack(Item item, int count)
     {
         this.item = item;
-        this.count = v;
+        this.count = count;
+    }
+
+    public ItemStack(Item item)
+    {
+        this.item = item;
+        this.count = 1;
     }
 }

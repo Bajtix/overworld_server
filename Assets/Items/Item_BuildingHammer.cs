@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Item_BuildingHammer : GameItem
 {
+
+    public override void Selected()
+    {
+        //ServerSend.SendInfo(itemOwner.id, "Hammer: LMB = Build, RMB = Remove, Q = Choose Part, R = Rotate");
+    }
     public override void MainClick()
     {
         itemOwner.builder.BuildButton();
@@ -37,5 +42,6 @@ public class Item_BuildingHammer : GameItem
     public override void Deselected()
     {
         itemOwner.builder.preview.transform.position = new Vector3(-69,-69,-69);
+        ServerSend.SendInfo(itemOwner.id, "");
     }
 }
