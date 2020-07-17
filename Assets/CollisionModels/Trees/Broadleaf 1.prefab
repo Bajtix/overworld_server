@@ -264,7 +264,8 @@ MonoBehaviour:
   hp: 100
   drop: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
   itemTag: 
-  fallingTreeEntity: 
+  fallingTreeEntity: prp_fallingtree
+  myTreeId: 0
 --- !u!1 &3308824477826935915
 GameObject:
   m_ObjectHideFlags: 0

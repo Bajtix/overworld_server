@@ -17,10 +17,16 @@ public class Item_Axe : GameItem
         if (Physics.Raycast(look.position, look.forward, out hit, 4f))
         {
             if (hit.collider != null)
+            {
                 if (hit.collider.GetComponent<ColliderPart>() != null)
                 {
                     hit.collider.GetComponent<ColliderPart>().obj.GetComponent<Resource>().Hit(myItem, this);
                 }
+                else if(hit.collider.GetComponent<Resource>() != null)
+                {
+                    hit.collider.GetComponent<Resource>().Hit(myItem, this);
+                }
+            }
         }
     }
 

@@ -480,6 +480,7 @@ MonoBehaviour:
     - vec_rusty-truck
     - prp_cargobob
     - prp_container
+    - prp_fallingtree
     _keys:
     - prp_present
     - vec_rusty-buggy
@@ -493,6 +494,7 @@ MonoBehaviour:
     - vec_rusty-truck
     - prp_cargobob
     - prp_container
+    - prp_fallingtree
     _values:
     - {fileID: 5168105003427674052, guid: 17c3ab37fc0b80f44880e35cbd9376a2, type: 3}
     - {fileID: 7878198004873616147, guid: 248b46e9eaf0ef84f98346155897e01f, type: 3}
@@ -506,6 +508,7 @@ MonoBehaviour:
     - {fileID: 5580710661981047151, guid: 7a308e36372d34142bb7fa6d889d9313, type: 3}
     - {fileID: 6648845698684088447, guid: 238876842e8a5be44b4af5fd391cc696, type: 3}
     - {fileID: 6973429722010034319, guid: cd050b28aa27e2c43bac0e799dbbadc6, type: 3}
+    - {fileID: 2340949328805736614, guid: ff80bd083a8b4f7439e5b3c337aa206e, type: 3}
   projectilePrefab: {fileID: 7859153389591767978, guid: f08613b9a5c37044f8cb2ad66a833ea6,
     type: 3}
 --- !u!4 &1902706400

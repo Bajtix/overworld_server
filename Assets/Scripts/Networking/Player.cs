@@ -5,7 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     
-
+    public enum PlayerStates
+    {
+        Walking = 0,
+        Sitting
+    }
 
     public int id;
     public string username;
@@ -29,6 +33,7 @@ public class Player : MonoBehaviour
     public bool[] inputs;
     private float yVelocity = 0;
     public float cspeed = 0;
+    public PlayerStates state;
 
     public Seat seatIn;
     private float interactTimeout;
@@ -38,6 +43,7 @@ public class Player : MonoBehaviour
         gravity *= Time.fixedDeltaTime * Time.fixedDeltaTime;
         moveSpeed *= Time.fixedDeltaTime;
         jumpSpeed *= Time.fixedDeltaTime;
+        state = PlayerStates.Walking;
     }
 
     public void Initialize(int _id, string _username)
@@ -80,10 +86,12 @@ public class Player : MonoBehaviour
         cspeed = _inputDirection.magnitude;
         if (seatIn == null)
         {
+            state = PlayerStates.Walking;
             Move(_inputDirection);
         }
         else
         {
+            state = PlayerStates.Sitting;
             seatIn.SetInputs(_inputDirection.y, _inputDirection.x);
             cspeed = -1f;
         }

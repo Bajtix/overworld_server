@@ -122,6 +122,7 @@ public class ServerSend
             _packet.Write(_player.id);
             _packet.Write(_player.transform.position);
             _packet.Write(_player.cspeed);
+            _packet.Write((int)_player.state);
 
             SendUDPDataToAll(_packet);
         }
@@ -129,14 +130,17 @@ public class ServerSend
 
     /// <summary>Sends a player's updated rotation to all clients except to himself (to avoid overwriting the local player's rotation).</summary>
     /// <param name="_player">The player whose rotation to update.</param>
-    public static void PlayerRotation(Player _player)
+    public static void PlayerRotation(Player _player, bool exception = true)
     {
         using (Packet _packet = new Packet((int)ServerPackets.playerRotation))
         {
             _packet.Write(_player.id);
             _packet.Write(_player.transform.rotation);
-
-            SendUDPDataToAll(_player.id, _packet);
+            
+            if(exception)
+                SendUDPDataToAll(_player.id, _packet);
+            else
+                SendUDPDataToAll(_packet);
         }
     }
 
@@ -331,6 +335,16 @@ public class ServerSend
         {
             _packet.Write(info);
             SendUDPData(player, _packet);
+        }
+    }
+
+    public static void SendItemResponse(int player, int response)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.itemResponse))
+        {
+            _packet.Write(player);
+            _packet.Write(response);
+            SendTCPDataToAll(_packet);
         }
     }
 

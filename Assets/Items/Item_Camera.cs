@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraItem : GameItem
+public class Item_Camera : GameItem
 {
     public override void MainClick()
     {
-        base.MainClick();
+        ServerSend.SendItemResponse(itemOwner.id, 0);
     }
 }

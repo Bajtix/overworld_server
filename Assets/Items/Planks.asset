@@ -16,7 +16,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   description: 
   itemTag: 
-  maxStackCount: 30
+  maxStackCount: 100
   model: {fileID: 1752574246651068745, guid: 87f0536b9899fe04480f63dd2c8d5963, type: 3}
   damage: 2
   durability: 2
