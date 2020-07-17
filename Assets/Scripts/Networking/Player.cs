@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 
     public bool[] inputs;
     private float yVelocity = 0;
+    public float cspeed = 0;
 
     public Seat seatIn;
     private float interactTimeout;
@@ -76,7 +77,7 @@ public class Player : MonoBehaviour
         {
             _inputDirection.x += 1;
         }
-
+        cspeed = _inputDirection.magnitude;
         if (seatIn == null)
         {
             Move(_inputDirection);
@@ -84,6 +85,7 @@ public class Player : MonoBehaviour
         else
         {
             seatIn.SetInputs(_inputDirection.y, _inputDirection.x);
+            cspeed = -1f;
         }
 
         ServerSend.PlayerPosition(this);

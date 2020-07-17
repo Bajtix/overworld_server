@@ -45,6 +45,7 @@ public class Seat : MonoBehaviour
         if (controller != null)
         {
             controller.transform.position = pos.position;
+            //controller.transform.rotation = pos.rotation;
         }
     }
 }
