@@ -12,7 +12,6 @@ public class NetworkManager : MonoBehaviour
     [System.Serializable]
     public class _EDIC : SerializableDictionaryBase<string, GameObject> { }
     public _EDIC entityPrefabs;
-    public GameObject projectilePrefab;
 
     private void Awake()
     {
@@ -41,14 +40,24 @@ public class NetworkManager : MonoBehaviour
     {
         Server.Stop();
     }
-
+    /// <summary>
+    /// Spawns new player into the worlds
+    /// </summary>
+    /// <returns>The spawned player</returns>
     public Player InstantiatePlayer()
     {
         RaycastHit hit;
         Physics.Raycast(new Vector3(1500f, 800f, 1500f), Vector3.down, out hit);
         return Instantiate(playerPrefab, hit.point + new Vector3(0,10,0) /*new Vector3(1600,300,1600)*/, Quaternion.identity).GetComponent<Player>();
     }
-
+    /// <summary>
+    /// Spawns the entity
+    /// </summary>
+    /// <param name="position">Entity Position</param>
+    /// <param name="rotation">Entity Rotation</param>
+    /// <param name="model">Entity Prefab (From entityPrefabs list)</param>
+    /// <param name="parentId">Parent (-9999 if none)</param>
+    /// <returns>The spawned Entity</returns>
     public Entity SpawnNewEntity(Vector3 position,Quaternion rotation, string model,int parentId)
     {
         if(parentId != -9999)

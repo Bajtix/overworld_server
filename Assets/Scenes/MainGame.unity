@@ -307,7 +307,6 @@ GameObject:
   - component: {fileID: 1721141967}
   - component: {fileID: 1721141966}
   - component: {fileID: 1721141968}
-  - component: {fileID: 1721141969}
   - component: {fileID: 1721141970}
   m_Layer: 0
   m_Name: TerrainManager
@@ -338,7 +337,6 @@ MonoBehaviour:
   - {fileID: 7163067579204544480, guid: 191b7aa380ad4704ba4388a686fcbdef, type: 3}
   detailPrefabs:
   - {fileID: 7759872310645103229, guid: e26a5f4b24b96b24c88a1d7b407cf334, type: 3}
-  - {fileID: 8090884991214454886, guid: 27989e7bb8b7ebd4f80705a066da0d5a, type: 3}
   renderDistance: 2
 --- !u!4 &1721141967
 Transform:
@@ -369,22 +367,6 @@ MonoBehaviour:
   terrainPrefab: {fileID: 9076922787664786189, guid: bed1a7daed282ea4fae06fc7d1f3c996,
     type: 3}
   chunkCount: 0
---- !u!114 &1721141969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721141965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd3218b2ed6f8874c9c1a505f2027047, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chunk: {fileID: 0}
-  cube: {fileID: 4152737444133632501, guid: 9f2fd5b8e456bf34395ae8c10ba59aad, type: 3}
-  clickHereToRemoveObject: 0
-  clickHereToAddObject: 0
 --- !u!114 &1721141970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,8 +491,6 @@ MonoBehaviour:
     - {fileID: 6648845698684088447, guid: 238876842e8a5be44b4af5fd391cc696, type: 3}
     - {fileID: 6973429722010034319, guid: cd050b28aa27e2c43bac0e799dbbadc6, type: 3}
     - {fileID: 2340949328805736614, guid: ff80bd083a8b4f7439e5b3c337aa206e, type: 3}
-  projectilePrefab: {fileID: 7859153389591767978, guid: f08613b9a5c37044f8cb2ad66a833ea6,
-    type: 3}
 --- !u!4 &1902706400
 Transform:
   m_ObjectHideFlags: 0
@@ -534,7 +514,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1902706397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d9b5b607483fd84a92f61bac5cd4a85, type: 3}
+  m_Script: {fileID: 11500000, guid: 9852f0898399711449421a58e4525d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn: 0

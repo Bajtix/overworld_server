@@ -10,6 +10,6 @@ public class FallingTree : Resource
         base.Hit(heldItem, instance);
         instance.itemOwner.inventorySystem.AddItem(itemdrop.item, Mathf.RoundToInt(itemdrop.count * heldItem.damage));
         if (hp <= 0)
-            EnitySpawner.instance.KillEntity(GetComponent<Entity>().id);
+            EntitySpawner.instance.KillEntity(GetComponent<Entity>().id);
     }
 }

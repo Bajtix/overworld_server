@@ -33,7 +33,7 @@ public class ServerHandle
     {
         Vector3 _pos = _packet.ReadVector3();
 
-        EnitySpawner.instance.SpawnCar(_pos);
+        EntitySpawner.instance.SpawnCar(_pos);
     }
 
     public static void Interact(int _fromClient, Packet _packet)

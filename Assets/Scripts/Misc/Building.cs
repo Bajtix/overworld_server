@@ -22,7 +22,7 @@ public class Building : MonoBehaviour
 
         if(hp<0)
         {
-            EnitySpawner.instance.KillEntity(GetComponent<Entity>().id); //decaying
+            EntitySpawner.instance.KillEntity(GetComponent<Entity>().id); //decaying
         }
     }
 }

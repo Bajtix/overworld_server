@@ -5,6 +5,9 @@ using UnityEngine;
 public class MenuResponseHandler : MonoBehaviour
 {
     public delegate void MenuHandler(int fromClient, int response);
+    /// <summary>
+    /// Menu handler registry
+    /// </summary>
     public static Dictionary<string,MenuHandler> handlers = new Dictionary<string, MenuHandler>()
         {
             { "building_selector", MenuResponseHandler.BuildingSelected },
@@ -20,7 +23,7 @@ public class MenuResponseHandler : MonoBehaviour
     public static void VeichleSelected(int fromClient, int response)
     {
         Debug.Log("Spawning car delivery");
-        EnitySpawner.instance.SpawnCar(Server.clients[fromClient].player.transform.position,response);
+        EntitySpawner.instance.SpawnCar(Server.clients[fromClient].player.transform.position,response);
         Debug.Log("Spawning car delivery 2");
     }
 }

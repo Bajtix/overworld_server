@@ -28,7 +28,7 @@ public class PlayerBuilder : MonoBehaviour
 
     private void Start()
     {
-        int id = EnitySpawner.instance.SpawnNewEntity(previewID, transform.position, transform.rotation);
+        int id = EntitySpawner.instance.SpawnEntity(previewID, transform.position, transform.rotation);
         preview = Server.entities[id].entity.gameObject;
         player = GetComponent<Player>();
     }
@@ -134,7 +134,7 @@ public class PlayerBuilder : MonoBehaviour
             {
                 if (hit.collider.GetComponent<Building>() != null)
                 {
-                    EnitySpawner.instance.KillEntity(hit.collider.GetComponent<Entity>().id);
+                    EntitySpawner.instance.KillEntity(hit.collider.GetComponent<Entity>().id);
                 }
             }
 
@@ -152,9 +152,9 @@ public class PlayerBuilder : MonoBehaviour
             {
                    
                 int id = buildingType == BuildSlot.PlaceSlotType.Main ? 
-                    EnitySpawner.instance.SpawnNewEntity(buildingParts[selectedPart].part, collider.transform.position, collider.transform.rotation * rot) 
+                    EntitySpawner.instance.SpawnEntity(buildingParts[selectedPart].part, collider.transform.position, collider.transform.rotation * rot) 
                     :
-                    EnitySpawner.instance.SpawnNewEntity(buildingParts[selectedPart].part, collider.transform.position, collider.transform.rotation); //spawns the selected building type in the selected slot and gets id.
+                    EntitySpawner.instance.SpawnEntity(buildingParts[selectedPart].part, collider.transform.position, collider.transform.rotation); //spawns the selected building type in the selected slot and gets id.
 
                 //Collider[] hitSlots = Physics.OverlapSphere(collider.transform.position, 0.1f, MaskBuilds(buildingType));
 
@@ -180,7 +180,7 @@ public class PlayerBuilder : MonoBehaviour
         else if (collider.GetComponent<TerrainGenerator>() != null)
         {
             if(buildingType == BuildSlot.PlaceSlotType.Foundation)
-                EnitySpawner.instance.SpawnNewEntity(buildingParts[0].part, hit.point, Quaternion.LookRotation(Vector3.up));
+                EntitySpawner.instance.SpawnEntity(buildingParts[0].part, hit.point, Quaternion.LookRotation(Vector3.up));
         }
 
 

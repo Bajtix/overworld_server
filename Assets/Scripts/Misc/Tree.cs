@@ -21,7 +21,7 @@ public class Tree : Resource
         if(hp <= 0)
         {
             instance.itemOwner.inventorySystem.AddItem(drop, Random.Range(20, 50));           
-            int newtreeid = EnitySpawner.instance.SpawnNewEntity(fallingTreeEntity, transform.position, Quaternion.identity);
+            int newtreeid = EntitySpawner.instance.SpawnEntity(fallingTreeEntity, transform.position, Quaternion.identity);
             Server.entities[newtreeid].entity.additionalData = myTreeId.ToString();
             GetComponent<ChunkObject>().chunk.RemoveFeature(GetComponent<ChunkObject>().myId);
         }

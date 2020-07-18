@@ -8,7 +8,7 @@ public class ShippingContainer : Interactable
 
     public override void Interact()
     {
-        EnitySpawner.instance.SpawnNewEntity(spawnProp, transform.position + new Vector3(0,5,0), Quaternion.identity);
-        EnitySpawner.instance.KillEntity(GetComponent<Entity>().id);
+        EntitySpawner.instance.SpawnEntity(spawnProp, transform.position + new Vector3(0,5,0), Quaternion.identity);
+        EntitySpawner.instance.KillEntity(GetComponent<Entity>().id);
     }
 }
