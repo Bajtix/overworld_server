@@ -65,5 +65,23 @@ public class NetworkManager : MonoBehaviour
         else
             return Instantiate(entityPrefabs[model], position, rotation).GetComponent<Entity>();
     }
+    /// <summary>
+    /// Sends chunkmods to the selected player
+    /// </summary>
+    /// <param name="toPlayer">Player to send them to</param>
+    public void SendChunkMods(int toPlayer)
+    {
+        StartCoroutine("Cmods",toPlayer);
+    }
+    private IEnumerator Cmods(int id)
+    {
+        Debug.Log("Sending chunkmods");
+        yield return new WaitForSeconds(4);
+        foreach (ChunkMod c in Server.bufferedChunkmods)
+        {
+            ServerSend.ChunkMod(c, id);
+            yield return new WaitForEndOfFrame();
+        }
+    }
 
 }
