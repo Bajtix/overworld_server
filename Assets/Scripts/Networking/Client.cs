@@ -228,10 +228,7 @@ public class Client
             }
         }
 
-        foreach(EntityManager e in Server.entities.Values)
-        {
-            ServerSend.SpawnEntity(id,e.entity);
-        }
+        
 
         // Send the new player to all players (including himself)
         foreach (Client _client in Server.clients.Values)
@@ -241,7 +238,15 @@ public class Client
                 ServerSend.SpawnPlayer(_client.id, player);
             }
         }
+
+        foreach (EntityManager e in Server.entities.Values)
+        {
+            ServerSend.SpawnEntity(id, e.entity);
+        }
+
+        NetworkManager.instance.SendChunkMods(id);
     }
+    
 
     /// <summary>Disconnects the client and stops all network traffic.</summary>
     private void Disconnect()

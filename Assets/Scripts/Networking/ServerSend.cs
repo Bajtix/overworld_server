@@ -272,6 +272,19 @@ public class ServerSend
         }
     }
 
+    public static void ChunkMod(ChunkMod c,int to)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.chunkMod))
+        {
+            _packet.Write((int)c.type);
+            _packet.Write(c.chunk);
+            _packet.Write(c.objectId);
+            _packet.Write(c.modelId);
+
+            SendTCPData(to,_packet);
+        }
+    }
+
     public static void Time(float time,float cloudDensity)
     {
         using (Packet _packet = new Packet((int)ServerPackets.time))
