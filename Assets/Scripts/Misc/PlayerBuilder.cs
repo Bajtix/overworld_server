@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerBuilder : MonoBehaviour
 {
-    
+
 
 
     public BuildSlot.PlaceSlotType buildingType = BuildSlot.PlaceSlotType.Foundation;
@@ -21,7 +21,8 @@ public class PlayerBuilder : MonoBehaviour
     public BuildingPart[] buildingParts;
     public int selectedPart = 0;
     public Transform look;
-    public Quaternion rot = Quaternion.identity;
+    public int rotation;
+    private Quaternion rot = Quaternion.identity;
     public string previewID;
     private Player player;
     public GameObject preview;
@@ -35,7 +36,21 @@ public class PlayerBuilder : MonoBehaviour
 
     public void UpdatePreview()
     {
-        
+        if (buildingType == BuildSlot.PlaceSlotType.Main)
+        {
+            rot = Quaternion.identity * Quaternion.Euler(0, 0, rotation * 90);
+            
+        }
+        else if (buildingType == BuildSlot.PlaceSlotType.Wall)
+        {
+            rot = Quaternion.identity * Quaternion.Euler(0, 0, rotation * 180);
+            
+        }
+        else
+        {
+            rot = Quaternion.identity;
+            
+        }
 
         buildingType = buildingParts[selectedPart].type;
         preview.GetComponent<Entity>().additionalData = buildingParts[selectedPart].part.ToString();
@@ -47,22 +62,21 @@ public class PlayerBuilder : MonoBehaviour
             if (layers.Contains(hit.collider.gameObject.layer))
             {
                 preview.transform.position = hit.collider.transform.position;
-                if (buildingType == BuildSlot.PlaceSlotType.Main)
-                    preview.transform.rotation = hit.collider.transform.rotation * rot;
-                else
-                    preview.transform.rotation = hit.collider.transform.rotation;
+                preview.transform.rotation = hit.collider.transform.rotation * rot;
             }
             else
             {
                 preview.transform.position = Vector3.zero;
             }
-            
+
         }
         else
+        {
             preview.GetComponent<Entity>().additionalData = "0";
+        }
     }
 
-    public int MaskBuilds(BuildSlot.PlaceSlotType t,bool def = true)
+    public int MaskBuilds(BuildSlot.PlaceSlotType t, bool def = true)
     {
         if (def)
         {
@@ -100,7 +114,7 @@ public class PlayerBuilder : MonoBehaviour
 
     public void BuildButton()
     {
-        
+
         if (player.inventorySystem.HasItem(buildingParts[selectedPart].cost.item, buildingParts[selectedPart].cost.count))
         {
             player.inventorySystem.RemoveItem(buildingParts[selectedPart].cost.item, buildingParts[selectedPart].cost.count);
@@ -143,18 +157,33 @@ public class PlayerBuilder : MonoBehaviour
 
     public void Build(Collider collider, RaycastHit hit)
     {
-        if (collider == null) return;
+        if (collider == null)
+        {
+            return;
+        }
 
         if (collider.GetComponent<BuildSlot>() != null)
         {
             BuildSlot slot = collider.GetComponent<BuildSlot>();
             if (slot.type == buildingType)
             {
-                   
-                int id = buildingType == BuildSlot.PlaceSlotType.Main ? 
-                    EntitySpawner.instance.SpawnEntity(buildingParts[selectedPart].part, collider.transform.position, collider.transform.rotation * rot) 
-                    :
-                    EntitySpawner.instance.SpawnEntity(buildingParts[selectedPart].part, collider.transform.position, collider.transform.rotation); //spawns the selected building type in the selected slot and gets id.
+
+                int id;
+                if (buildingType == BuildSlot.PlaceSlotType.Main)
+                {
+                    rot = Quaternion.identity * Quaternion.Euler(0, 0, rotation * 90);
+                    id = EntitySpawner.instance.SpawnEntity(buildingParts[selectedPart].part, collider.transform.position, collider.transform.rotation * rot);
+                }
+                else if (buildingType == BuildSlot.PlaceSlotType.Wall)
+                {
+                    rot = Quaternion.identity * Quaternion.Euler(0, 0, rotation * 180);
+                    id = EntitySpawner.instance.SpawnEntity(buildingParts[selectedPart].part, collider.transform.position, collider.transform.rotation * rot);
+                }
+                else
+                {
+                    rot = Quaternion.identity;
+                    id = EntitySpawner.instance.SpawnEntity(buildingParts[selectedPart].part, collider.transform.position, collider.transform.rotation); //spawns the selected building type in the selected slot and gets id.
+                }
 
                 //Collider[] hitSlots = Physics.OverlapSphere(collider.transform.position, 0.1f, MaskBuilds(buildingType));
 
@@ -173,14 +202,16 @@ public class PlayerBuilder : MonoBehaviour
 
                 Building b = collider.transform.parent.GetComponent<Building>();
                 b.placeSlots[b.placeSlots.IndexOf(slot)] = newSlot;
-                
+
 
             }
         }
         else if (collider.GetComponent<TerrainGenerator>() != null)
         {
-            if(buildingType == BuildSlot.PlaceSlotType.Foundation)
+            if (buildingType == BuildSlot.PlaceSlotType.Foundation)
+            {
                 EntitySpawner.instance.SpawnEntity(buildingParts[0].part, hit.point, Quaternion.LookRotation(Vector3.up));
+            }
         }
 
 

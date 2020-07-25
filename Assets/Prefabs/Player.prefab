@@ -178,7 +178,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.8
-  m_Radius: 0.3
+  m_Radius: 0.35
   m_SlopeLimit: 50
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -228,9 +228,24 @@ MonoBehaviour:
     cost:
       item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
       count: 20
+  - part: bld_wall_tilted
+    type: 1
+    cost:
+      item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
+      count: 15
+  - part: bld_stairs_u
+    type: 3
+    cost:
+      item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
+      count: 20
+  - part: bld_wall_tilted_window
+    type: 1
+    cost:
+      item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
+      count: 15
   selectedPart: 0
   look: {fileID: 7311943217482982376}
-  rot: {x: 0, y: 0, z: 0, w: 1}
+  rotation: 0
   previewID: utl_buildpreview
   preview: {fileID: 0}
 --- !u!114 &1962134101382729344

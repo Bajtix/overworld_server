@@ -21,7 +21,9 @@ public class Item_BuildingHammer : GameItem
 
     public override void Reload()
     {
-        itemOwner.builder.rot *= Quaternion.Euler(0,0,90);
+        itemOwner.builder.rotation += 1;
+        if (itemOwner.builder.rotation > 3)
+            itemOwner.builder.rotation = 0;
     }
 
     public override void Alternative()
