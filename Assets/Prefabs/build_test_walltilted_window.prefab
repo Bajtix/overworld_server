@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 739167931291904729}
   - component: {fileID: 1879609275705353528}
   - component: {fileID: 942649709797726378}
+  - component: {fileID: 2831805136002711021}
   m_Layer: 13
   m_Name: build_test_walltilted_window
   m_TagString: Untagged
@@ -112,3 +113,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: a802c317df94b5e43b60cbb52abddcdd, type: 3}
+--- !u!114 &2831805136002711021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243821571155168012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd3a6f5338efff4596accd0b506aec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 10
+  stability: 0
+  placeSlots: []
+  defaultPlaceSlots: []

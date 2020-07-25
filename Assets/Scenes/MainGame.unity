@@ -383,6 +383,7 @@ MonoBehaviour:
     - prp_fallingtree
     - bld_stairs_u
     - bld_wall_tilted_window
+    - bld_stairs_l
     _keys:
     - prp_present
     - vec_rusty-buggy
@@ -400,6 +401,7 @@ MonoBehaviour:
     - prp_fallingtree
     - bld_stairs_u
     - bld_wall_tilted_window
+    - bld_stairs_l
     _values:
     - {fileID: 5168105003427674052, guid: 17c3ab37fc0b80f44880e35cbd9376a2, type: 3}
     - {fileID: 7878198004873616147, guid: 248b46e9eaf0ef84f98346155897e01f, type: 3}
@@ -417,6 +419,7 @@ MonoBehaviour:
     - {fileID: 2340949328805736614, guid: ff80bd083a8b4f7439e5b3c337aa206e, type: 3}
     - {fileID: 6998780555906693674, guid: de505af353999bd44badb14887405586, type: 3}
     - {fileID: 1243821571155168012, guid: 21580560cde35d14fba331269bc4ce44, type: 3}
+    - {fileID: 6758096410160476680, guid: fe14b0c974476d548b7b91eae6db4c31, type: 3}
 --- !u!4 &1902706400
 Transform:
   m_ObjectHideFlags: 0

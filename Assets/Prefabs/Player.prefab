@@ -243,6 +243,11 @@ MonoBehaviour:
     cost:
       item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
       count: 15
+  - part: bld_stairs_l
+    type: 3
+    cost:
+      item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}
+      count: 20
   selectedPart: 0
   look: {fileID: 7311943217482982376}
   rotation: 0
