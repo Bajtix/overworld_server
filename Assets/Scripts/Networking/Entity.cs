@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    [System.NonSerialized]
     public int id;
+    [System.NonSerialized]
     public string modelId;
+    [System.NonSerialized]
     public int parentId = -1;
+    [System.NonSerialized]
     public string additionalData;
     public bool updatePos = true;
+    public uint updateTick = 1;
+
+    private int tick = 0;
 
     /// <summary>
     /// Initializes entity with data
@@ -29,7 +36,17 @@ public class Entity : MonoBehaviour
     {
         if(updatePos)
         {
-            ServerSend.EntityPosition(this);
+            if (tick >= updateTick)
+            {
+                SendEntityData();
+                tick = 0; // sends updates every few ticks
+            }
+            tick++;
         }
+    }
+
+    public void SendEntityData()
+    {
+        ServerSend.EntityPosition(this);
     }
 }

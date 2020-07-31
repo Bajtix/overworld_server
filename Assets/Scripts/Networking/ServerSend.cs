@@ -254,7 +254,10 @@ public class ServerSend
             _packet.Write(entity.id);
             _packet.Write(entity.transform.position);
             _packet.Write(entity.transform.rotation);
-            _packet.Write(entity.additionalData);
+            if(entity.additionalData != null)
+                _packet.Write(entity.additionalData);
+            else
+                _packet.Write("");
             SendUDPDataToAll(_packet);
         }
     }
@@ -285,7 +288,7 @@ public class ServerSend
         }
     }
 
-    public static void Time(float time,float cloudDensity)
+    public static void Time(long time,float cloudDensity)
     {
         using (Packet _packet = new Packet((int)ServerPackets.time))
         {

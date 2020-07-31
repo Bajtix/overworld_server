@@ -296,6 +296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3be66863400664982ea766e7ed9503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sendInterval: 3
   time: 0
   clouds: 0
 --- !u!1 &1902706397
@@ -384,6 +385,7 @@ MonoBehaviour:
     - bld_stairs_u
     - bld_wall_tilted_window
     - bld_stairs_l
+    - prp_radio_receiver_1
     _keys:
     - prp_present
     - vec_rusty-buggy
@@ -402,6 +404,7 @@ MonoBehaviour:
     - bld_stairs_u
     - bld_wall_tilted_window
     - bld_stairs_l
+    - prp_radio_receiver_1
     _values:
     - {fileID: 5168105003427674052, guid: 17c3ab37fc0b80f44880e35cbd9376a2, type: 3}
     - {fileID: 7878198004873616147, guid: 248b46e9eaf0ef84f98346155897e01f, type: 3}
@@ -420,6 +423,7 @@ MonoBehaviour:
     - {fileID: 6998780555906693674, guid: de505af353999bd44badb14887405586, type: 3}
     - {fileID: 1243821571155168012, guid: 21580560cde35d14fba331269bc4ce44, type: 3}
     - {fileID: 6758096410160476680, guid: fe14b0c974476d548b7b91eae6db4c31, type: 3}
+    - {fileID: 7288468483033548903, guid: 1872e9002a1a6b54b9627d98f5af175a, type: 3}
 --- !u!4 &1902706400
 Transform:
   m_ObjectHideFlags: 0
