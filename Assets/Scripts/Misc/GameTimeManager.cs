@@ -4,7 +4,7 @@ public class GameTimeManager : MonoBehaviour
 {
     public static GameTimeManager instance;
 
-    public float sendInterval = 1;
+    public int sendInterval = 1;
     public long time;
 
 
@@ -27,9 +27,10 @@ public class GameTimeManager : MonoBehaviour
     private void FixedUpdate()
     {
         countdown += Time.fixedDeltaTime;
+        
         if (countdown >= sendInterval)
         {
-            time++;
+            time += sendInterval;
             countdown = 0;
             SendTime();
         }

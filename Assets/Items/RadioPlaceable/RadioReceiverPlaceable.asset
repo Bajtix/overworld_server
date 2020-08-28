@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62b336d8ef3c91c40b6d44bc0c1506b2, type: 3}
-  m_Name: Hammer
+  m_Name: RadioReceiverPlaceable
   m_EditorClassIdentifier: 
+  name: Radio Receiver
   icon: {fileID: 0}
-  name: Hammer
   description: 
-  maxStackCount: 0
-  model: {fileID: 3118707998004898989, guid: f782bfdf7d55d7d4f9c5cf259c39d918, type: 3}
+  itemTag: 
+  maxStackCount: 1
+  model: {fileID: 8856266614213867501, guid: d1353a7303fcc53459b7ba6580d2f067, type: 3}
+  damage: 1
+  durability: 1

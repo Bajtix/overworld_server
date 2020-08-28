@@ -306,6 +306,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0ed98ee4303d0044aafb54d2b18052fb, type: 2}
   - {fileID: 11400000, guid: 1474df1577f6a6d47b9923eae1367399, type: 2}
   - {fileID: 11400000, guid: 9caf2cb9f71d63341a5f714366105be0, type: 2}
+  - {fileID: 11400000, guid: fc898245f8f72ad4aae84cd1406d0481, type: 2}
   inventory: {fileID: 4721983753050473027}
 --- !u!1 &5549317518423601054
 GameObject:
