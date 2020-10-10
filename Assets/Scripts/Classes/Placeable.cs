@@ -17,7 +17,7 @@ public class Placeable : GameItem
         {
             Entity e = EntitySpawner.instance.SpawnEntityReturn(entityToSpawn, hit.point, Quaternion.identity);
             e.transform.LookAt(look.position);
-            e.transform.rotation = Quaternion.LookRotation(transform.forward, hit.normal) * e.transform.rotation;
+            e.transform.rotation = Quaternion.LookRotation(transform.forward, hit.normal) * Quaternion.Euler(0,e.transform.rotation.eulerAngles.y - 90,0);
         }
     }
 }
