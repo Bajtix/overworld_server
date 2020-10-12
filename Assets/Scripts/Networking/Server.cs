@@ -22,6 +22,14 @@ public class Server
     private static TcpListener tcpListener;
     private static UdpClient udpListener;
 
+
+    public static void RegisterLuaFunctions()
+    {
+        Debug.Log("Attempt to register methods");
+        Server.luaState.RegisterFunction("hi", typeof(LuaLibs).GetMethod("Hi"));
+        Debug.Log("Registered methods");
+    }
+
     /// <summary>Starts the server.</summary>
     /// <param name="_maxPlayers">The maximum players that can be connected simultaneously.</param>
     /// <param name="_port">The port to start the server on.</param>
@@ -44,7 +52,8 @@ public class Server
         Debug.Log($"Server started on port {Port}.");
 
         luaState = new Lua();
-        luaState.LoadCLRPackage();
+        LuaLibs.RegisterLuaFunctions();
+
         Application.logMessageReceived += Application_logMessageReceived;
         Debug.Log("Initialized LUA state");
         Debug.Log("Server loaded!");       
