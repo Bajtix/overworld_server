@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLua;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -16,6 +17,8 @@ public class Server
     public delegate void PacketHandler(int _fromClient, Packet _packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
 
+    public static Lua luaState;
+
     private static TcpListener tcpListener;
     private static UdpClient udpListener;
 
@@ -24,6 +27,7 @@ public class Server
     /// <param name="_port">The port to start the server on.</param>
     public static void Start(int _maxPlayers, int _port)
     {
+        
         MaxPlayers = _maxPlayers;
         Port = _port;
 
@@ -38,6 +42,17 @@ public class Server
         udpListener.BeginReceive(UDPReceiveCallback, null);
 
         Debug.Log($"Server started on port {Port}.");
+
+        luaState = new Lua();
+        luaState.LoadCLRPackage();
+        Application.logMessageReceived += Application_logMessageReceived;
+        Debug.Log("Initialized LUA state");
+        Debug.Log("Server loaded!");       
+    }
+
+    private static void Application_logMessageReceived(string condition, string stackTrace, LogType type)
+    {
+        ServerSend.SendConsoleMessage(condition);
     }
 
     /// <summary>Handles new TCP connections.</summary>
@@ -136,7 +151,8 @@ public class Server
             { (int)ClientPackets.interact, ServerHandle.Interact },
             { (int)ClientPackets.menuResponse, ServerHandle.MenuResponse },
             { (int)ClientPackets.invReq, ServerHandle.InventoryRequest },
-            { (int)ClientPackets.invMod, ServerHandle.InventoryMod }
+            { (int)ClientPackets.invMod, ServerHandle.InventoryMod },
+            { (int)ClientPackets.luaCmd, ServerHandle.LuaCommand }
         };
         Debug.Log("Initialized packets.");
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -67,6 +68,26 @@ public class ServerHandle
         int from = _packet.ReadInt();
         int to = _packet.ReadInt();
         Server.clients[_fromClient].player.inventorySystem.Transfer(from, to);
+    }
+
+    public static void LuaCommand(int _fromClient,Packet packet)
+    {
+        string cmd = packet.ReadString();
+
+        try
+        {
+            var response = Server.luaState.DoString(cmd);
+
+            if (response != null)
+                Debug.Log(response[0]);
+            else 
+                Debug.Log("Lua Ok");
+        }
+        catch(Exception e)
+        {
+            Debug.LogError(e);
+        }
+        
     }
 
 
