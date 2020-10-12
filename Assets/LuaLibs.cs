@@ -13,11 +13,15 @@ public class LuaLibs
     public static void RegisterLuaFunctions()
     {
         Debug.Log("Register lua methods");
-        
-        Server.luaState.RegisterFunction("hi", typeof(LuaLibs).GetMethod("Hi"));
 
+        Server.luaState.RegisterLuaClassType(typeof(ExampleClass), typeof(ExampleClass));
+        Server.luaState.RegisterFunction("hi", typeof(LuaLibs).GetMethod("Hi"));
 
         Debug.Log("Registered methods");
     }
 }
 
+public static class ExampleClass
+{
+    public static string s;
+}
