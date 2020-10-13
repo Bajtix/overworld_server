@@ -1,10 +1,10 @@
-﻿using NLua;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
+using Jint;
 
 public class Server
 {
@@ -17,18 +17,12 @@ public class Server
     public delegate void PacketHandler(int _fromClient, Packet _packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
 
-    public static Lua luaState;
+    public static Engine js;
 
     private static TcpListener tcpListener;
     private static UdpClient udpListener;
 
 
-    public static void RegisterLuaFunctions()
-    {
-        Debug.Log("Attempt to register methods");
-        Server.luaState.RegisterFunction("hi", typeof(LuaLibs).GetMethod("Hi"));
-        Debug.Log("Registered methods");
-    }
 
     /// <summary>Starts the server.</summary>
     /// <param name="_maxPlayers">The maximum players that can be connected simultaneously.</param>
@@ -51,11 +45,10 @@ public class Server
 
         Debug.Log($"Server started on port {Port}.");
 
-        luaState = new Lua();
-        LuaLibs.RegisterLuaFunctions();
+        js = new Engine();
 
         Application.logMessageReceived += Application_logMessageReceived;
-        Debug.Log("Initialized LUA state");
+        
         Debug.Log("Server loaded!");       
     }
 
@@ -161,7 +154,7 @@ public class Server
             { (int)ClientPackets.menuResponse, ServerHandle.MenuResponse },
             { (int)ClientPackets.invReq, ServerHandle.InventoryRequest },
             { (int)ClientPackets.invMod, ServerHandle.InventoryMod },
-            { (int)ClientPackets.luaCmd, ServerHandle.LuaCommand }
+            { (int)ClientPackets.consoleCmd, ServerHandle.Command }
         };
         Debug.Log("Initialized packets.");
     }

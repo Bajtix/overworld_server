@@ -70,18 +70,13 @@ public class ServerHandle
         Server.clients[_fromClient].player.inventorySystem.Transfer(from, to);
     }
 
-    public static void LuaCommand(int _fromClient,Packet packet)
+    public static void Command(int _fromClient,Packet packet)
     {
         string cmd = packet.ReadString();
 
         try
         {
-            var response = Server.luaState.DoString(cmd);
-
-            if (response != null)
-                Debug.Log(response[0]);
-            else 
-                Debug.Log("Lua Ok");
+            
         }
         catch(Exception e)
         {
