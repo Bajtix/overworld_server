@@ -76,13 +76,18 @@ public class ServerHandle
 
         try
         {
-            
+            //todo
         }
         catch(Exception e)
         {
             Debug.LogError(e);
         }
         
+    }
+
+    public static void InputString(int _fromClient, Packet packet)
+    {
+        Server.clients[_fromClient].player.inputString = packet.ReadString();
     }
 
 

@@ -13,7 +13,7 @@ public class RadioReceiver : Interactable
         GameTimeManager.instance.SendTime();
     }
 
-    public override void Interact()
+    public override void Interact(Player player = null)
     {
         channel++;
         entity.additionalData = channel.ToString();

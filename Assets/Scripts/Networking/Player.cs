@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     public Seat seatIn;
     private float interactTimeout;
 
+    public string inputString;
+
     private void Start()
     {
         gravity *= Time.fixedDeltaTime * Time.fixedDeltaTime;
@@ -224,7 +226,7 @@ public class Player : MonoBehaviour
 
         if(collider.GetComponent<Interactable>() != null)
         {
-            collider.GetComponent<Interactable>().Interact();
+            collider.GetComponent<Interactable>().Interact(this);
         }
         
         

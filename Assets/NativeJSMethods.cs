@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class NativeJSMethods
@@ -35,6 +36,12 @@ public class NativeJSMethods
         public void print(string text)
         {
             computerBind.actualConsoleLog += text;
+        }
+
+        public string readl()
+        {
+            while (!computerBind.inputBuffer.Contains("\n")) { };
+            return computerBind.inputBuffer;
         }
     }
 }
