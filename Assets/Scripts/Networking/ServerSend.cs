@@ -364,18 +364,6 @@ public class ServerSend
         }
     }
 
-    public static void SendConsoleMessage(string msg,int player = -1)
-    {
-        using(Packet packet = new Packet((int)ServerPackets.consoleMessage))
-        {
-            packet.Write(msg);
-
-            if (player == -1)
-                SendTCPDataToAll(packet);
-            else
-                SendTCPData(player, packet);
-        }
-    }
 
     #endregion
 }

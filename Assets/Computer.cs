@@ -21,7 +21,7 @@ public class Computer : Interactable
 
     private void Update()
     {
-        inputBuffer = user.inputString;
+        //inputBuffer = user.inputString;
     }
 
     public override void Interact(Player player = null)

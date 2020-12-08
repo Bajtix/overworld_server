@@ -54,7 +54,7 @@ public class Server
 
     private static void Application_logMessageReceived(string condition, string stackTrace, LogType type)
     {
-        ServerSend.SendConsoleMessage(condition);
+        //ServerSend.SendConsoleMessage(condition);
     }
 
     /// <summary>Handles new TCP connections.</summary>

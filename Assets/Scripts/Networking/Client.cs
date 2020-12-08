@@ -123,7 +123,14 @@ public class Client
                     using (Packet _packet = new Packet(_packetBytes))
                     {
                         int _packetId = _packet.ReadInt();
-                        Server.packetHandlers[_packetId](id, _packet); // Call appropriate method to handle the packet
+                        try
+                        {
+                            Server.packetHandlers[_packetId](id, _packet); // Call appropriate method to handle the packet
+                        }
+                        catch(Exception e)
+                        {
+                            Debug.LogError($"Unhandled packet: {_packetId}, {e} ");
+                        }
                     }
                 });
 
