@@ -13,6 +13,7 @@ public class Entity : MonoBehaviour
     public int parentId = -1;
     [System.NonSerialized]
     public string additionalData;
+    public object additionalDataObject;
     public bool updatePos = true;
     public uint updateTick = 1;
 

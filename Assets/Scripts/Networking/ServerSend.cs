@@ -258,6 +258,13 @@ public class ServerSend
                 _packet.Write(entity.additionalData);
             else
                 _packet.Write("");
+
+
+            if (entity.additionalDataObject != null)
+                _packet.WriteObject(entity.additionalDataObject);
+            else
+                _packet.WriteObject(null);
+
             SendUDPDataToAll(_packet);
         }
     }

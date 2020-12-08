@@ -1197,6 +1197,17 @@ MonoBehaviour:
   speed: 6000
   brake: 10000
   turnAngle: 40
+  clutches:
+  - torque: 10000
+    minRpm: 0
+    maxRpm: 20
+  - torque: 5000
+    minRpm: 15
+    maxRpm: 40
+  - torque: 3000
+    minRpm: 30
+    maxRpm: 130
+  clutch: 0
 --- !u!114 &3234717906623983693
 MonoBehaviour:
   m_ObjectHideFlags: 0

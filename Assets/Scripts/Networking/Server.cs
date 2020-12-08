@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
-using Jint;
 
 public class Server
 {
@@ -17,7 +16,6 @@ public class Server
     public delegate void PacketHandler(int _fromClient, Packet _packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
 
-    public static Engine js;
 
     private static TcpListener tcpListener;
     private static UdpClient udpListener;
@@ -45,7 +43,6 @@ public class Server
 
         Debug.Log($"Server started on port {Port}.");
 
-        js = new Engine();
 
         Application.logMessageReceived += Application_logMessageReceived;
         
