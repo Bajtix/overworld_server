@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
 
     public bool[] inputs;
     private float yVelocity = 0;
-    public float cspeed = 0;
+    public Vector3 cspeed = Vector3.zero;
     public PlayerStates state;
 
     public Seat seatIn;
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
         {
             _inputDirection.x += 1;
         }
-        cspeed = _inputDirection.magnitude;
+        cspeed = _inputDirection;
         if (seatIn == null)
         {
             state = PlayerStates.Walking;
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         {
             state = PlayerStates.Sitting;
             seatIn.SetInputs(_inputDirection.y, _inputDirection.x);
-            cspeed = -1f;
+            cspeed = -Vector3.one;
         }
 
         ServerSend.PlayerPosition(this);
