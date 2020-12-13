@@ -17,6 +17,9 @@ public class Entity : MonoBehaviour
     public bool updatePos = true;
     public uint updateTick = 1;
 
+    public bool checkPlayerNearby = true;
+    public float updateDistance = 100f;
+    
     private int tick = 0;
 
     /// <summary>
@@ -33,9 +36,27 @@ public class Entity : MonoBehaviour
     }
 
 
+    private bool IsPlayerNearby()
+    {
+        bool i = false;
+        foreach(var p in Server.clients.Values)
+        {
+            if(p.player != null)
+            if (Vector3.Distance(transform.position, p.player.transform.position) < updateDistance)
+                i = true;
+        }
+
+        return i;
+    }
+
     private void FixedUpdate()
     {
-        if(updatePos)
+        bool playerNearby = true;
+
+        if (checkPlayerNearby)
+            playerNearby = IsPlayerNearby();
+
+        if (updatePos && playerNearby)
         {
             if (tick >= updateTick)
             {

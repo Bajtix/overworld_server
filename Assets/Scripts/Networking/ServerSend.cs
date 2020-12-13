@@ -249,6 +249,8 @@ public class ServerSend
 
     public static void EntityPosition(Entity entity)
     {
+        
+
         using (Packet _packet = new Packet((int)ServerPackets.entityPosition))
         {
             _packet.Write(entity.id);

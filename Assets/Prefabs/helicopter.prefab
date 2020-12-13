@@ -52,10 +52,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,6 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &2170976489860433897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -149,10 +152,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -177,6 +182,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6698210518736101893
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -202,11 +208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c14723a330be94ea62dc367c620f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  modelId: 
-  parentId: -1
-  additionalData: 
   updatePos: 1
+  updateTick: 1
+  checkPlayerNearby: 0
+  updateDistance: 100
 --- !u!114 &1972033145663848328
 MonoBehaviour:
   m_ObjectHideFlags: 0

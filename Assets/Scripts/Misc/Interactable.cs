@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public virtual void Interact(Player player = null)
+    public virtual void Interact(Player player = null, KeyCode button = KeyCode.E)
     {
 
     }

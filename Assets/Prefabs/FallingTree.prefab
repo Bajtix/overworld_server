@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b278ea8de10c3649934a42198aa8a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 300
+  hp: 100
   drop: {fileID: 0}
   itemdrop:
     item: {fileID: 11400000, guid: a8e7ac77c8fb83a43ac5d3aa49db93d3, type: 2}

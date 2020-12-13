@@ -13,16 +13,16 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - No Player
+  - Player
   - PostProcessing
   - BuildSlot Foundation
   - BuildSlot Wall
   - BuildSlot Floor
   - BuildSlot Inner
   - Building
-  - 
-  - 
+  - DontCollideWithWheelColliders
+  - WheelColliders
   - 
   - 
   - 

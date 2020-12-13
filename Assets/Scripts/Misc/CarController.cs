@@ -8,110 +8,98 @@ public class CarController : MonoBehaviour
     public Seat driverSeat;
     public Seat[] passengerSeats;
 
-    public WheelCollider[] motorWheels;
-    public WheelCollider[] turningWheels;
-    public WheelCollider[] oppositeTurningWheels;
-
+    public WheelCollider[] cmotorWheels;
+    public WheelCollider[] cturningWheels;
+    
 
     public Transform seatPos;
-    private Rigidbody rb;
 
     public bool steered = false;
 
-    public float speed;
-    public float brake = 1000;
+    public float maxRpm;
+    public float torqe;
+    public float brake;
     public float turnAngle;
 
-    [Serializable]
-    public struct Clutch
-    {
-        public float torque;
-
-        public float minRpm;
-        public float maxRpm;
-    }
-
-    public List<Clutch> clutches;
-    public int clutch = 1;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    [Serializable]
-    private struct CarData
-    {
-        public float steerAngle;
-        public float rpm;
-        public bool steered;
-
-        public CarData(float steerAngle, float rpm, bool steered)
-        {
-            this.steerAngle = steerAngle;
-            this.rpm = rpm;
-            this.steered = steered;
-        }
-    }
 
     private void FixedUpdate()
     {
-        
-        steered = driverSeat.controller != null;
-        
-        GetComponent<Entity>().additionalDataObject = new CarData(driverSeat.horizontal * turnAngle, motorWheels[0].rpm,steered);
 
-        if (!steered)
+        GetComponent<Entity>().additionalDataObject = (cturningWheels[0].steerAngle, cturningWheels[0].rpm, false);
+
+        if (driverSeat.controller == null)
         {
-            rb.drag = 1;
-            foreach (WheelCollider wheel in motorWheels)
+            foreach (WheelCollider w in cmotorWheels)
             {
-                wheel.brakeTorque = brake;
+                w.brakeTorque = 10000;
             }
+            return;
+        }
+
+        
+       
+        foreach (WheelCollider w in cmotorWheels)
+        {
+            float rpm = -w.rpm;
+            float arpm = Mathf.Abs(rpm);
+            float nrpm;
+
+            if (rpm > 7f)
+                nrpm = 0.01f;
+            else if (rpm < -7f)
+                nrpm = -0.01f;
+            else
+                nrpm = 0f;
+
+            float nv = Mathf.Clamp(driverSeat.vertical, -0.01f, 0.01f);
+            float av = Mathf.Abs(driverSeat.vertical);
+
+
+
+            if (arpm > 0.01f || av > 0.01f)
+            {
+                if ((nv > nrpm || nv < nrpm) && nrpm != 0)
+                {
+                    w.motorTorque = 0;
+                    w.brakeTorque = brake;
+                }
+                else
+                {
+                    w.brakeTorque = 0f;
+                    WTorque(w, arpm);
+                }
+            }
+            else
+            {
+                w.brakeTorque = 0;
+                w.motorTorque = 0;
+            }
+
+
+            /* if (!dbg)  debug stuff
+             {
+                 dbg = true;
+                 Debug.Log($"RPM: {rpm:000000.0}; NRPM: {nrpm:0.00}; Torque: {w.motorTorque:000000.0}; Brake: {w.brakeTorque:000000.0}"); 
+             }*/
+        }
+
+
+        foreach (WheelCollider w in cturningWheels)
+        {
+            w.steerAngle = driverSeat.horizontal * turnAngle;
+        }
+
+    }
+
+    private void WTorque(WheelCollider w, float arpm)
+    {
+        if (arpm < maxRpm)
+        {
+            w.motorTorque = -torqe * driverSeat.vertical;
         }
         else
         {
-            rb.drag = 0.1f;
-            if(driverSeat.vertical == 0 )
-                foreach (WheelCollider wheel in motorWheels)
-                {
-                    wheel.brakeTorque = .7f;
-                    wheel.motorTorque = 0f;
-                }
-            else
-                foreach (WheelCollider wheel in motorWheels)
-                {
-                    wheel.brakeTorque = 0f;
-                }
-        }
-
-
-        Clutch c = clutches[clutch];
-
-        foreach (WheelCollider wheel in motorWheels)
-        {
-            if (wheel.rpm < c.maxRpm)
-            {
-                var trq = -c.torque * driverSeat.vertical;
-                wheel.motorTorque = trq * Time.fixedDeltaTime * 30f;
-                Debug.Log("applying torque: " + trq);
-            }
-            else if (clutch < clutches.Count - 1)
-                clutch++;
-            
-            if (wheel.rpm < c.minRpm && clutch > 0)
-                clutch--;
-
-        }
-
-        foreach (WheelCollider wheel in turningWheels)
-        {
-            wheel.steerAngle = turnAngle * driverSeat.horizontal;
-        }
-
-        foreach (WheelCollider wheel in oppositeTurningWheels)
-        {
-            wheel.steerAngle = turnAngle * -driverSeat.horizontal;
+            w.motorTorque = 0f;
         }
     }
 }

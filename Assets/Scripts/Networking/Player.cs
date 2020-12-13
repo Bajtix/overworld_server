@@ -40,12 +40,16 @@ public class Player : MonoBehaviour
 
     public string inputString;
 
+    public Grabbable holding;
+
     private void Start()
     {
         gravity *= Time.fixedDeltaTime * Time.fixedDeltaTime;
         moveSpeed *= Time.fixedDeltaTime;
         jumpSpeed *= Time.fixedDeltaTime;
         state = PlayerStates.Walking;
+
+        controller.detectCollisions = false;
     }
 
     public void Initialize(int _id, string _username)
@@ -148,17 +152,36 @@ public class Player : MonoBehaviour
         {
             if (seatIn == null)
             {
-                RaycastHit hit;
-                if (Physics.Raycast(look.position, look.forward, out hit, 6f))
+                if (holding != null)
+                {                    
+                    holding.boundTo = null;
+                    holding = null;
+                }
+                else
                 {
-                    if (hit.collider != null)
-                        Interact(hit.collider, hit);
+                    RaycastHit hit;
+                    if (Physics.Raycast(look.position, look.forward, out hit, 6f))
+                    {
+                        if (hit.collider != null)
+                            Interact(hit.collider, hit);
+                    }
                 }
             }
             else
-            {                             
+            {
+                
                 seatIn.LeaveSeat();
                 seatIn = null;
+            }
+        }
+
+        if(code == KeyCode.F)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(look.position, look.forward, out hit, 6f))
+            {
+                if (hit.collider != null)
+                    Interact(hit.collider, hit,KeyCode.F);
             }
         }
 
@@ -183,6 +206,7 @@ public class Player : MonoBehaviour
             if (seatIn == null)
             {
                 inventory.RightClick();
+                
             }
         }
 
@@ -213,7 +237,7 @@ public class Player : MonoBehaviour
         interactTimeout = 0.1f;
     }
 
-    private void Interact(Collider collider, RaycastHit hit)
+    private void Interact(Collider collider, RaycastHit hit, KeyCode button = KeyCode.E)
     {
         if (collider.GetComponent<Seat>() != null)
         {
@@ -226,7 +250,7 @@ public class Player : MonoBehaviour
 
         if(collider.GetComponent<Interactable>() != null)
         {
-            collider.GetComponent<Interactable>().Interact(this);
+            collider.GetComponent<Interactable>().Interact(this,button);
         }
         
         

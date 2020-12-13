@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class EntitySpawner : MonoBehaviour
 {
     public static EntitySpawner instance;
@@ -89,4 +93,26 @@ public class EntitySpawner : MonoBehaviour
         Server.entities.Remove(id);
     }
 
+
+
 }
+#if UNITY_EDITOR
+[CustomEditor(typeof(EntitySpawner))]
+class EntitySpawnerEditor : Editor
+{
+    private string eName = "";
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        GUILayout.BeginHorizontal();
+        eName = EditorGUILayout.TextField("Entity to spawn",eName);
+        if(GUILayout.Button("Spawn"))
+        {
+            ((EntitySpawner)target).SpawnEntity(eName, Vector3.zero, Quaternion.identity);
+        }
+
+        GUILayout.EndHorizontal();
+    }
+}
+#endif

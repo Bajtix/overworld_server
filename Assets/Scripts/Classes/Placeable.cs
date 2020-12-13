@@ -6,6 +6,7 @@ public class Placeable : GameItem
 {
     public string entityToSpawn;
     private Transform look;
+    public bool lookAtPlacement;
     private void Start()
     {
         look = itemOwner.look;
@@ -16,6 +17,7 @@ public class Placeable : GameItem
         if (Physics.Raycast(look.position, look.forward, out hit, 14f,LayerMask.GetMask("Default","Building")))
         {
             Entity e = EntitySpawner.instance.SpawnEntityReturn(entityToSpawn, hit.point, Quaternion.identity);
+            
             e.transform.LookAt(look.position);
             e.transform.rotation = Quaternion.LookRotation(transform.forward, hit.normal) * Quaternion.Euler(0,e.transform.rotation.eulerAngles.y - 90,0);
         }

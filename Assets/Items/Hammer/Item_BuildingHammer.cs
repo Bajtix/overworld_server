@@ -43,6 +43,7 @@ public class Item_BuildingHammer : GameItem
 
     public override void Deselected()
     {
+        Debug.Log("Hide hammer");
         itemOwner.builder.preview.transform.position = new Vector3(-69,-69,-69);
         ServerSend.SendInfo(itemOwner.id, "");
     }

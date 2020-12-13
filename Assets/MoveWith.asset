@@ -9,14 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62b336d8ef3c91c40b6d44bc0c1506b2, type: 3}
-  m_Name: Planks
+  m_Script: {fileID: 11500000, guid: 57f201bb4d924ea5831150a2e71c4a6e, type: 3}
+  m_Name: MoveWith
   m_EditorClassIdentifier: 
-  name: Planks
-  icon: {fileID: 0}
-  description: 
-  itemTag: 
-  maxStackCount: 1000
-  model: {fileID: 1752574246651068745, guid: 87f0536b9899fe04480f63dd2c8d5963, type: 3}
-  damage: 2
-  durability: 2

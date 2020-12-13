@@ -90,5 +90,9 @@ public class ServerHandle
         Server.clients[_fromClient].player.inputString = packet.ReadString();
     }
 
-
+    public static void CamTransform(int _fromClient, Packet _packet)
+    {
+        Quaternion _rot = _packet.ReadQuaternion();
+        Server.clients[_fromClient].player.look.rotation = _rot;
+    }
 }
