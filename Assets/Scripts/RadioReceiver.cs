@@ -9,6 +9,7 @@ public class RadioReceiver : Grabbable
 
     private void Start()
     {
+        entity = GetComponent<Entity>();
         GameTimeManager.instance.SendTime();
     }
 
