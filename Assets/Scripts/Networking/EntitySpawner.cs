@@ -52,12 +52,12 @@ public class EntitySpawner : MonoBehaviour
     /// <param name="position">Entity Position</param>
     /// <param name="rotation">Entity Rotation</param>
     /// <returns>The id of the new entity</returns>
-    public int SpawnEntity(string modelId, Vector3 position, Quaternion rotation)
+    public int SpawnEntity(string modelId, Vector3 position, Quaternion rotation, object data = null)
     {
         int id = _GameUtilityToolset.FirstFree(Server.entities, 0);
 
         Server.entities.Add(id, new EntityManager(id, modelId, -9999));
-        Server.entities[id].Spawn(position, rotation);
+        Server.entities[id].Spawn(position, rotation,data);
 
         return id;
     }

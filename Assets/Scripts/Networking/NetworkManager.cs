@@ -58,12 +58,15 @@ public class NetworkManager : MonoBehaviour
     /// <param name="model">Entity Prefab (From entityPrefabs list)</param>
     /// <param name="parentId">Parent (-9999 if none)</param>
     /// <returns>The spawned Entity</returns>
-    public Entity SpawnNewEntity(Vector3 position,Quaternion rotation, string model,int parentId)
+    public Entity SpawnNewEntity(Vector3 position,Quaternion rotation, string model,int parentId, object data = null)
     {
+        Entity sp;
         if(parentId != -9999)
-            return Instantiate(entityPrefabs[model], position, rotation,Server.entities[parentId].entity.transform).GetComponent<Entity>();
+            sp = Instantiate(entityPrefabs[model], position, rotation,Server.entities[parentId].entity.transform).GetComponent<Entity>();
         else
-            return Instantiate(entityPrefabs[model], position, rotation).GetComponent<Entity>();
+            sp = Instantiate(entityPrefabs[model], position, rotation).GetComponent<Entity>();
+        sp.additionalDataObject = data;
+        return sp;
     }
     /// <summary>
     /// Sends chunkmods to the selected player

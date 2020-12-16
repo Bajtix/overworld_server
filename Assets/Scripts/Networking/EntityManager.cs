@@ -25,10 +25,10 @@ public class EntityManager
     /// </summary>
     /// <param name="position">New entity's position</param>
     /// <param name="rotation">New entity's rotation</param>
-    public void Spawn(Vector3 position, Quaternion rotation)
+    public void Spawn(Vector3 position, Quaternion rotation, object data = null)
     {
-        entity = NetworkManager.instance.SpawnNewEntity(position,rotation, modelId,parentId);
-        entity.Initialize(id,modelId,parentId);
+        entity = NetworkManager.instance.SpawnNewEntity(position,rotation, modelId,parentId,data);
+        entity.Initialize(id,modelId,parentId,data);
         
         ServerSend.SpawnEntity(entity);
     }

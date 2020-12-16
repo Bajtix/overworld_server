@@ -28,11 +28,12 @@ public class Entity : MonoBehaviour
     /// <param name="id">The entities id, should be the same as server's</param>
     /// <param name="modelId">The spawned entity. </param>
     /// <param name="parentId">Parent entity</param>
-    public void Initialize(int id,string modelId, int parentId)
+    public void Initialize(int id,string modelId, int parentId, object data = null)
     {
         this.id = id;
         this.modelId = modelId;
         this.parentId = parentId;
+        this.additionalDataObject = data;
     }
 
 

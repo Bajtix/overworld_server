@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     public string inputString;
 
     public Grabbable holding;
-
+    private LayerMask dmask;
     private void Start()
     {
         gravity *= Time.fixedDeltaTime * Time.fixedDeltaTime;
@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
         state = PlayerStates.Walking;
 
         controller.detectCollisions = false;
+
+        dmask = _GameUtilityToolset.GetPhysicsLayerMask(0);
     }
 
     public void Initialize(int _id, string _username)
@@ -160,7 +162,7 @@ public class Player : MonoBehaviour
                 else
                 {
                     RaycastHit hit;
-                    if (Physics.Raycast(look.position, look.forward, out hit, 6f))
+                    if (Physics.Raycast(look.position, look.forward, out hit, 6f, dmask))
                     {
                         if (hit.collider != null)
                             Interact(hit.collider, hit);
@@ -178,7 +180,7 @@ public class Player : MonoBehaviour
         if(code == KeyCode.F)
         {
             RaycastHit hit;
-            if (Physics.Raycast(look.position, look.forward, out hit, 6f))
+            if (Physics.Raycast(look.position, look.forward, out hit, 6f,dmask))
             {
                 if (hit.collider != null)
                     Interact(hit.collider, hit,KeyCode.F);

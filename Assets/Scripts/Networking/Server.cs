@@ -152,7 +152,8 @@ public class Server
             { (int)ClientPackets.invReq, ServerHandle.InventoryRequest },
             { (int)ClientPackets.invMod, ServerHandle.InventoryMod },
             { (int)ClientPackets.consoleCmd, ServerHandle.Command },
-            { (int)ClientPackets.look, ServerHandle.CamTransform }
+            { (int)ClientPackets.look, ServerHandle.CamTransform },
+            { (int)ClientPackets.requestEntity, ServerHandle.RequestEntity }
         };
         Debug.Log("Initialized packets.");
     }

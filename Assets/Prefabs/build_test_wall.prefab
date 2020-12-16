@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 3956353571694051987}
   - component: {fileID: 7847516800505471858}
   - component: {fileID: 3977361429982628298}
+  - component: {fileID: 641531028801215265}
   m_Layer: 13
   m_Name: build_test_wall
   m_TagString: Building
@@ -195,6 +196,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 35798c158408896449b29462b3a54685, type: 3}
+--- !u!114 &641531028801215265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644100740068361823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228569bddf6523d4ab9885c54b7a6c49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags:
+  - {fileID: 11400000, guid: f3e4927b5fd7d1c448c231fd37c3f3fc, type: 2}
 --- !u!1 &5533876448236890784
 GameObject:
   m_ObjectHideFlags: 0

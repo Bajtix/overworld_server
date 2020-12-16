@@ -46,8 +46,8 @@ public class Grabbable : Interactable
 
             rb.AddForce(dvec * dist * force);
             rb.MoveRotation(boundTo.look.rotation * irot);
-            rb.drag = 2;
-            rb.angularDrag = 2;
+            rb.drag = 5 - dist;
+
         }
         else
             rb.angularDrag = 0;

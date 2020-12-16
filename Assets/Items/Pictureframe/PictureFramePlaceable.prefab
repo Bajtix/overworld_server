@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8856266614213867503}
   - component: {fileID: 8856266614213867502}
   m_Layer: 0
-  m_Name: RadioReceiverPlaceable
+  m_Name: PictureFramePlaceable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemOwner: {fileID: 0}
-  myItem: {fileID: 11400000, guid: fc898245f8f72ad4aae84cd1406d0481, type: 2}
-  entityToSpawn: prp_radio_receiver_1
+  myItem: {fileID: 11400000, guid: 4d036188705c11d4ea4d370a19bcd220, type: 2}
+  entityToSpawn: bld_picframe
   lookAtPlacement: 0
-  faceHitNormalOnly: 0
+  faceHitNormalOnly: 1
+  useTag: 1
   layerPlaceOn:
     serializedVersion: 2
-    m_Bits: 24577
+    m_Bits: 8192
+  tagOn:
+  - {fileID: 11400000, guid: f3e4927b5fd7d1c448c231fd37c3f3fc, type: 2}

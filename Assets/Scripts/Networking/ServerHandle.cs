@@ -95,4 +95,15 @@ public class ServerHandle
         Quaternion _rot = _packet.ReadQuaternion();
         Server.clients[_fromClient].player.look.rotation = _rot;
     }
+
+    public static void RequestEntity(int _fromClient, Packet _packet)
+    {
+        string _mdl = _packet.ReadString();
+        Vector3 _pos = _packet.ReadVector3();
+        Quaternion _rot = _packet.ReadQuaternion();
+
+        object o = _packet.ReadObject();
+
+        EntitySpawner.instance.SpawnEntityReturn(_mdl, _pos, _rot).additionalDataObject = o;
+    }
 }

@@ -219,6 +219,7 @@ public class ServerSend
             _packet.Write(entity.transform.rotation);
             _packet.Write(entity.modelId);
             _packet.Write(entity.parentId);
+            _packet.WriteObject(entity.additionalDataObject);
 
             SendTCPDataToAll(_packet);
         }
