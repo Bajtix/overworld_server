@@ -235,7 +235,12 @@ public class Client
             }
         }
 
-        
+        Debug.Log(Server.entities.Values.Count);
+
+        foreach (EntityManager e in Server.entities.Values)
+        {
+            ServerSend.SpawnEntity(id, e.entity);
+        }
 
         // Send the new player to all players (including himself)
         foreach (Client _client in Server.clients.Values)
@@ -246,10 +251,7 @@ public class Client
             }
         }
 
-        foreach (EntityManager e in Server.entities.Values)
-        {
-            ServerSend.SpawnEntity(id, e.entity);
-        }
+        
 
         NetworkManager.instance.SendChunkMods(id);
     }

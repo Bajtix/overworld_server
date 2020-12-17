@@ -34,6 +34,7 @@ public class Placeable : GameItem
                 {
                     e.transform.LookAt(look.position);
                     e.transform.rotation = Quaternion.LookRotation(transform.forward, hit.normal) * Quaternion.Euler(0, e.transform.rotation.eulerAngles.y - 90, 0);
+                    e.SendEntityData();
                 }
                 else
                 {

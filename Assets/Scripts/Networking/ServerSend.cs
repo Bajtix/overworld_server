@@ -234,6 +234,9 @@ public class ServerSend
             _packet.Write(entity.transform.rotation);
             _packet.Write(entity.modelId);
             _packet.Write(entity.parentId);
+            _packet.WriteObject(entity.additionalDataObject);
+
+            //Debug.Log("Sending: " + entity.transform.rotation.ToString());
 
             SendTCPData(to,_packet);
         }
@@ -370,6 +373,15 @@ public class ServerSend
         {
             _packet.Write(player);
             _packet.Write(response);
+            SendTCPDataToAll(_packet);
+        }
+    }
+
+    public static void ConsoleMessage(string msg)
+    {
+        using (Packet _packet = new Packet((int)ServerPackets.consoleMessage))
+        {
+            _packet.Write(msg);
             SendTCPDataToAll(_packet);
         }
     }

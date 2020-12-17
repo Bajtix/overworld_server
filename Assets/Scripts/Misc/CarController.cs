@@ -103,7 +103,6 @@ public class CarController : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Debug.Log(hit.distance);
             return hit.distance - w.radius - radiusOffset;
         }
         else

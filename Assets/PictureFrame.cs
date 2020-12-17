@@ -30,6 +30,8 @@ public class PictureFrame : Interactable
 
         bound.transform.position = transform.position + transform.forward * offset;
         bound.transform.rotation = transform.rotation * Quaternion.Euler(90, 0, 0);
+
+        Debug.Log($"picture frame test debug: my rot: {transform.rotation}  server my rot {Server.entities[GetComponent<Entity>().id].entity.transform.rotation}");
     }
 
 

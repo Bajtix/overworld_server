@@ -76,7 +76,7 @@ public class ServerHandle
 
         try
         {
-            //todo
+            LuaCommands.ExecCmd(_fromClient, cmd);
         }
         catch(Exception e)
         {
