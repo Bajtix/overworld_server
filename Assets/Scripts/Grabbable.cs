@@ -18,7 +18,7 @@ public class Grabbable : Interactable
 
     public override void Interact(Player player = null, KeyCode button = KeyCode.E)
     {
-        if (button != KeyCode.E) return;
+        if (button != KeyCode.G) return;
 
         if (player != null && player != boundTo)
         {

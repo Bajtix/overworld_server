@@ -147,27 +147,25 @@ public class Player : MonoBehaviour
     {
         if (interactTimeout > 0)
             return;
-        
-        
 
-        if(code == KeyCode.E)
+        if (holding != null)
+        {
+            holding.boundTo = null;
+            holding = null;
+            return;
+        }
+
+        if (code == KeyCode.E)
         {
             if (seatIn == null)
             {
-                if (holding != null)
-                {                    
-                    holding.boundTo = null;
-                    holding = null;
-                }
-                else
-                {
+                
                     RaycastHit hit;
                     if (Physics.Raycast(look.position, look.forward, out hit, 6f, dmask))
                     {
                         if (hit.collider != null)
                             Interact(hit.collider, hit);
                     }
-                }
             }
             else
             {
@@ -177,13 +175,13 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(code == KeyCode.F)
+        if(code == KeyCode.F || code == KeyCode.X || code == KeyCode.G)
         {
             RaycastHit hit;
             if (Physics.Raycast(look.position, look.forward, out hit, 6f,dmask))
             {
                 if (hit.collider != null)
-                    Interact(hit.collider, hit,KeyCode.F);
+                    Interact(hit.collider, hit,code);
             }
         }
 
