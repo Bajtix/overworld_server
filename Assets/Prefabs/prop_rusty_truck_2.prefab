@@ -1427,6 +1427,7 @@ GameObject:
   - component: {fileID: 5860706271191328174}
   - component: {fileID: 5860706271191328175}
   - component: {fileID: 5907544636769650029}
+  - component: {fileID: 7487480817282587724}
   m_Layer: 14
   m_Name: prop_rusty_truck_2
   m_TagString: Untagged
@@ -1519,6 +1520,7 @@ MonoBehaviour:
   turnAngle: 20
   debugMode: 0
   allWheels: []
+  radiusOffset: 0
 --- !u!114 &5907544636769650029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1533,6 +1535,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tags:
   - {fileID: 11400000, guid: 2c1f458e265772443a56323d1ce3b678, type: 2}
+--- !u!114 &7487480817282587724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860706271191328145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483bb45c25b2df1408163b38c91ab399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerOfMassOffset: {x: 0, y: -1.29, z: 0}
+  showCOM: 1
 --- !u!1 &6425336238155823945
 GameObject:
   m_ObjectHideFlags: 0

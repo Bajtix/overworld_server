@@ -345,8 +345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 0
-  noiseScale: 0.01872365
-  multiplier: 10
+  noiseScale: 0.023424
+  multiplier: 500
   treePrefabs:
   - {fileID: 3011794604958367282, guid: 2c2dcce04620dc24ebbd6fd6b331c111, type: 3}
   - {fileID: 5302226978487596292, guid: d8b0850e3766c5246af27c14c58a9f6a, type: 3}
